@@ -1,0 +1,3 @@
+Il vostro file .tex riguardante la vostra parte di documentazione va messo dentro sections.
+Ciò che vi serve (modifiche al diario delle modifiche e comandi creati) è tutto nella cartella res. Il changelog è il file per compilare il diario delle modifiche mentre local è il file con i comandi.
+Per verificare la documentazione dovete creare il pdf del file PianoProgetto in locale. Il tutto da terminale con pdflatex -synctex=1 -interaction=nonstopmode PianoProgetto.tex

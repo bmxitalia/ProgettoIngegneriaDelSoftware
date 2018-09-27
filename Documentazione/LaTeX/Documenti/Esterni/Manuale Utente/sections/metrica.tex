@@ -1,0 +1,50 @@
+\subsection{Metriche}
+
+	\subsubsection{Configurazione di una metrica}
+
+	Di seguito viene riportata un configurazione di esempio per una metrica, con la successiva spiegazione dei vari campi che l'utente può configurare:
+
+	\begin{lstlisting}[style=json]
+
+		{
+			"name": "http-duration-by-url",
+			"cron": "0 * * * * *",
+			"duration": 60,
+			"traces_index": "stagemonitor-spans-*",
+			"metrics_index": "#'openapm-metrics-'yyyy.MM.dd",
+			"filters": [
+				{
+					"operator": "=",
+					"operands": [
+						"type",
+						"'http'"
+					]
+				}
+			],
+			"aggregation": {
+				"operands": [
+				"http.url"
+				]
+			},
+			"calculation": {
+				"operator": "average",
+				"operands": [
+					"duration_ms"
+				]
+			}
+		}
+	\end{lstlisting}
+
+	La configurazione di cui sopra va inserita nell'indice di configurazione metriche che di default è: \textit{openapm-config-metrics} \\
+	I campi configurabili sono quindi:
+
+	\begin{itemize}
+                \item \textbf{name:} specifica il nome per la metrica generata, rappresenterà il valore del campo `name' della metrica;
+                \item \textbf{cron:} specifica un'espressione cron che determini quando il calcolo della metrica deve essere eseguito;
+                \item \textbf{duration:} specifica un valore, in secondi, che determini l'intervallo in cui prelevare le trace per il calcolo la metrica (Es. 60 secondi);
+                \item \textbf{traces\_index:} specifica l'indice o la tabella da cui prelevare le trace;
+                \item \textbf{metrics\_index:} specifica l'indice o la tabella in cui salvare le metriche;
+                \item \textbf{filters:} specifica una lista di operatori filtro per selezionare le trace valide da utilizzare per il calcolo;
+                \item \textbf{aggregation:} specifica un operatore che, dato un unico gruppo di trace, le divida in tanti sottogruppi;
+                \item \textbf{calculation:} specifica un operatore che, dato un gruppo di metriche, ne estragga un valore numerico rappresentante il valore finale della metrica per quel gruppo di trace.
+	\end{itemize}

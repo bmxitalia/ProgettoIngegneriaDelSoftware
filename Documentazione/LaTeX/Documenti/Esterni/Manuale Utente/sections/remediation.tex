@@ -1,0 +1,108 @@
+\subsection{Azioni di rimedio}
+
+	\subsubsection{Configurazione}
+
+	Di seguito viene riportata un configurazione di esempio per un'azione di rimedio, con la successiva spiegazione dei vari campi che l'utente può configurare:
+
+	\begin{lstlisting}[style=json]
+
+		{
+			"name": "save-alert",
+			"type": "save",
+			"data": { /* ... */ }
+		}
+	\end{lstlisting}
+
+	La configurazione di cui sopra va inserita nell'indice di configurazione baseline che di default è: \textit{openapm-config-actions} \\
+	I campi configurabili sono quindi:
+
+	\begin{itemize}
+                \item \textbf{name:} specifica un nome per l'azione di rimedio a solo scopo informativo;
+                \item \textbf{type:} sperifica la tipologia di azione da intraprendere e può assumere valore:
+			\begin{itemize}
+                		\item save;
+                		\item email;
+                		\item exec.
+			\end{itemize}
+                \item \textbf{data:} specifica la struttura di ogni azione.
+	\end{itemize}
+
+	\myparagraph{Salvataggio alert}
+
+	Espandiamo la clausola `data' per illustrarne composizione e campi configurabili nel caso di azione di tipo `save':
+
+	\begin{lstlisting}[style=json]
+
+		{
+			"name": "save-alert",
+			"type": "save",
+			"data": {
+				"index": "#'openapm-alerts-'yyyy.MM.dd",
+				"type": "alerts"
+			}
+		}
+	\end{lstlisting}
+
+
+	\begin{itemize}
+                \item \textbf{type:} specifica il tipo di azione, in questo caso `save';
+                \item \textbf{data.index:} specifica l'indice o la tabella in cui salvare l'allarme;
+                \item \textbf{data.type:} specifica la tipologia di documento per l'allarme; alcuni DBMS richiedono che venga dichiarato un tipo per il documento, come nel caso di Elasticsearch.
+	\end{itemize}
+
+	\myparagraph{Esecuzione script}
+
+	Espandiamo la clausola `data' per illustrarne composizione e campi di configurabili nel caso di azione di tipo `exec':
+
+	\begin{lstlisting}[style=json]
+
+		{
+			"name": "exec-hello-world",
+			"type": "exec",
+			"data": {
+				"script": "#!/usr/bin/env bash\n\ncurl \"http://127.0.0.1:8081/?name=$ALERT_NAME&when=$ALERT_WHEN\";"
+			}
+		}
+	\end{lstlisting}
+
+
+	\begin{itemize}
+                \item \textbf{type:} specifica il tipo di azione, in questo caso `exec';
+                \item \textbf{data.sript:} specifica il contenuto dello script da eseguire, contenente obbligatoriamente lo shebang. Sono disponibili due variabili d'ambiente:
+			\begin{itemize}
+                		\item \textbf{ALERT\_NAME:} con il nome dell'alert scatenato;
+                		\item \textbf{ALERT\_WHEN:} con l'unix timestamp dell'ora in cui è stato scatenato.
+       			\end{itemize}
+	\end{itemize}
+
+	\myparagraph{Invio di un email}
+
+	Espandiamo la clausola `data' per illustrarne composizione e campi di configurabili nel caso di azione di tipo `email':
+
+	\begin{lstlisting}[style=json]
+
+		{
+			"name": "send-email",
+			"type": "email",
+			"data": {
+				"to": "alert@example.com",
+				"subject": "Alert {{ name }} has been triggered",
+				"body": "Alert <b>{{ name }}</b> has been triggered at <i>{{ when | date('yyyy.MM.dd HH:mm:ss') }}</i>"
+			}
+		}
+	\end{lstlisting}
+
+
+	\begin{itemize}
+                \item \textbf{type:} specifica il tipo di azione, in questo caso `email';
+                \item \textbf{data.to:} specifica il destinatario dell'email;
+                \item \textbf{data.subject:} specifica l'oggetto dell'email, elemento processato da \glossaryItem{jTwig};
+                \item \textbf{data.body:} specifica il corpo dell'email, elemento processato da jTwig.
+	\end{itemize}
+
+	Il template mette a disposizione anche alcune variabili come:
+
+	\begin{itemize}
+                \item \textbf{name:} Nome dell'alert scatenato;
+                \item \textbf{when:} Orario dell'allarme (java.lang.Date).
+	\end{itemize}

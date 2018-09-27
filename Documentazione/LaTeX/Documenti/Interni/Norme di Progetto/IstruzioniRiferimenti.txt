@@ -1,0 +1,1 @@
+Per aggiungere i vostri riferimenti dovete modificare introduzione.tex e usare la sintassi fornita. N.B. Da mettere in ordine alfabetico.

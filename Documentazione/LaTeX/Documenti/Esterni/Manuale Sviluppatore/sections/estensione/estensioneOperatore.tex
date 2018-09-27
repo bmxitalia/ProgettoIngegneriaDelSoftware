@@ -1,0 +1,58 @@
+\subsection{Implementare un nuovo operatore}
+\label{newoperatore}
+	\subsubsection{Realizzazione dell'operatore}
+		
+		Un operatore è una classe che implementa l'interfaccia \lstinline{it.iks.openapm.operators.Operator}
+		con i metodi più opportuni.
+		Se l'operatore in questione non supporta una determinata operazione, 
+		è sufficiente lanciare un'eccezione \lstinline{UnsupportedOperationException}.\\
+		I metodi necessari alla classe del nuovo operatore sono:
+
+		\begin{itemize}
+			\item \lstinline[language=Java]{boolean valid()}:
+				Determina se l'operatore è stato configurato correttamente o meno;
+
+			\item \lstinline[language=Java]{boolean match(Map<String, Object> item)}:
+				Dato un oggetto, determina se l'oggetto soddisfa i filtri di questo operatore.
+				Per esempio, un operatore di uguaglianza, impostato sui valori \lstinline{attribute = 20}, 
+				restituirà vero solo se l'oggetto passato ha il campo \lstinline{attribute} uguale a \lstinline{20};
+
+			\item \lstinline[language=Java]{String group(Map<String, Object> item)}:
+				Dato un oggetto, verrà restituita una stringa che rappresenta un ``gruppo'' in cui 
+				posizionare l'oggetto.
+				Per esempio, un operatore di attributo, impostato sul valore \lstinline{key}, 
+				restituirà il valore dell'attributo \lstinline{key} dell'oggetto passato,
+				risultato nella raggruppamento degli oggetti a seconda del valore di \lstinline{key};
+
+			\item \lstinline[language=Java]{double calculate(Iterable<Map<String, Object>> items)}:
+				Dato un insieme di oggetti, restuire il valore numerico corrispondente.
+				Per esempio, un operatore di media, impostato sul valore \lstinline{key}, restituirà 
+				la media aritmetica dei valori \lstinline{key} di tutti gli oggetti passati.
+
+		\end{itemize}
+		È disponibile una classe astratta \lstinline{it.iks.openapm.operators.AbstractOperator} da estendere,
+		che implementa tutti i metodi richiesti lanciando un'eccezione \lstinline{UnsupportedOperationException}. 
+		Viene dato di default un comportamento particolare al metodo \lstinline{group}: vengono separati tutti 
+		gli oggetti che restituiscono \lstinline{true} all'operazione di \lstinline{match} da quelli che 
+		restituiscono \lstinline{false}.
+		Lo scopo di questa classe è ridurre il \glossaryItem{boilerplate} code necessario per creare un operatore che non 
+		implementa tutte le funzioni.
+
+	\subsubsection{Registrare l'operatore}
+
+		Per collegare un identificatore alla classe corretta è necessario aggiungere un valore 
+		\lstinline[language=Java]{<String, Class<? extends Operator>>} al campo \lstinline{operatorsTable} 
+		di 	\lstinline{it.iks.openapm.operators.OperatorFactory}. 
+		Per farlo è sufficiente aggiungere una riga nell'inizializzazione statica della variabile 
+		(poche righe dopo la sua dichiarazione).
+
+		Per esempio, per collegare l'identificatore \lstinline{=} all'operatore \lstinline{EqualsOperator}:
+		\begin{lstlisting}[language=Java]
+	// OperatorFactory L35
+	tempOperatorsTable.put("=", EqualsOperator.class);
+		\end{lstlisting}
+
+		La modifica della classe \verb=OperatorFactory= alla registrazione di ogni nuovo operatore risulta un punto critico in 
+		questa classe, la soluzione a questo problema è l'implementazione di meccanismi di Reflection che permetterebbero
+		di modificare dinamicamente la classe \verb=OperatorFactory=.\\
+		Al momento \GroupName{} non ha ancora implementato questa soluzione.

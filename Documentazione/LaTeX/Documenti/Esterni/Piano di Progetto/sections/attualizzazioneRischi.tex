@@ -1,0 +1,121 @@
+\section{Attualizzazione dei rischi}
+\label{Attuazione rischi}
+Vengono di seguito indicati i rischi riscontrati nei periodi di progetto e come il gruppo li ha
+trattati. Un elenco completo con descrizione dei possibili rischi è presente nella sezione §\ref{analisi dei rischi}.
+L'attualizzazione dei rischi è inserita in una tabella con il seguente significato:
+\begin{itemize}
+	\item \textbf{Rischio}: è il rischio che si è attualizzato nel periodo;
+	\item \textbf{Conseguenze}: sono le conseguenze del rischio che si è attualizzato nel periodo;
+	\item \textbf{Soluzione}: è la soluzione che il gruppo ha adottato per mitigare il rischio.
+\end{itemize}
+
+\subsection{Analisi}
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{| p{3cm} | p{6cm} | p{6cm} |}
+		\hline
+		\textbf{Rischio} & \textbf{Conseguenze} & \textbf{Soluzione} \\
+		\hline
+		\textbf{Scarsa esperienza} &  \begin{itemize}
+								\item impiego di tempo per lo studio delle tecnologie;
+								\item ritardi nella stesura della documentazione.
+							\end{itemize} & I membri con più difficoltà sono stati affiancati da membri più competenti	 \\ \hline
+		\textbf{Disponibilità temporali} & Difficoltà nel pianificare correttamente l'intero progetto & Il Responsabile ha ridistribuito i compiti tra i membri non impegnati 		 \\ \hline
+		\textbf{Strumentazione personale} & Difficoltà di comunicazione tra i membri del team a cause di problemi di connessione di un membro & Il membro ha lavorato dai laboratori dell'università \\ \hline
+		\textbf{Strumenti Software} & Errori di compilazione sui file \LaTeX{} & Il gruppo non ha risolto il problema ma i file .pdf sono stati comunque generati correttamente \\ \hline
+		\textbf{Problemi di versionamento} & Replicazione del branch master su ogni branch a cause di un utilizzo scorretto del comando \textit{git checkout} & Creazione di un nuovo branch per ogni nuovo documento e per ogni sua modifica futura \\
+		\hline
+	\end{tabular}
+	\caption[Attualizzazione rischi - Analisi]{Attualizzazione rischi - Analisi}
+\end{table}
+\newpage
+
+\subsection{Analisi in dettaglio}
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{| p{3cm} | p{6cm} | p{6cm} |}
+		\hline
+		\textbf{Rischio} & \textbf{Conseguenze} & \textbf{Soluzione} \\
+		\hline
+		\textbf{Disponibilità temporali} & Difficoltà nel pianificare correttamente il progetto & Il Responsabile ha ridistribuito i compiti tra i membri non impegnati 		 \\ \hline
+	\end{tabular}
+	\caption[Attualizzazione rischi - Analisi in dettaglio]{Attualizzazione rischi - Analisi in dettaglio}
+\end{table}
+\newpage
+
+\subsection{Progettazione architetturale}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| p{3cm} | p{6cm} | p{6cm}|}
+		\hline
+		\textbf{Rischio} & \textbf{Conseguenze} & \textbf{Soluzione} \\
+		\hline
+		\textbf{Tecnologie da usare} & \begin{itemize}
+									\item utilizzo di molte ore di formazione per comprendere le tecnologie;
+									\item difficoltà nell'apprendere Spring Batch (carenza di documentazione).
+								\end{itemize} & Il membro con più esperienza ha formato il resto del team sulle tecnologie	 \\ \hline
+		\textbf{Disponibilità temporali} & \begin{itemize}
+										\item alcuni membri non hanno potuto contribuire agli incrementi essendo impegnati nella sessione invernale;
+										\item dopo la sessione invernale pochi membri del team hanno contribuito agli incrementi;
+										\item peggioramento della valutazione finale rispetto al periodo precedente.\end{itemize} & Ai membri che non hanno lavorato in questo periodo sono stati assegnati compiti futuri. Ai membri che hanno lavorato sono stati rimossi compiti futuri
+											 \\ \hline
+		\textbf{Contrasti nel gruppo} & I membri che hanno lavorato maggiormente in questo periodo hanno ripreso i membri che non hanno lavorato & \begin{itemize}
+						\item promessa di maggior impegno da parte dei componenti che hanno lavorato meno;
+						\item scadenze rese più strette;
+						\item richiesta di segnalare al Responsabile i propri impegni in largo anticipo.
+					\end{itemize}		 \\ \hline
+		\textbf{Analisi dei requisiti errata} & Utilizzo di molte ore di analista per correggere il documento di Analisi dei Requisiti a causa di una cattiva comprensione dei concetti di scenario e di attore & Sono stati richiesti chiarimenti ai Committenti i quali hanno sanato i dubbi del team che ha provveduto alla riscrittura del documento \\ \hline
+		\textbf{Modifica dei requisiti} & Negoziazione dei requisiti & I requisiti di Machine Learning sono stati sostituiti da un maggior impegno da parte del team per la solidificazione dei requisiti obbligatori. La decisione è stata presa con la Proponente \\ \hline
+		\end{tabular}
+		\end{table}
+		\newpage
+		\begin{table}[H]
+	\centering
+	\begin{tabular}{| p{3cm} | p{6cm} | p{6cm}|}
+		\hline
+		\textbf{Rischio} & \textbf{Conseguenze} & \textbf{Soluzione} \\
+		\hline
+		\textbf{Strumentazione personale} & Problemi di compatibilità di Docker tra i vari computer dei membri del team & Per i componenti con Windows Home è stato installato Docker ToolBox con VirtualBox\\
+		\hline
+	\end{tabular}
+	\caption[Attualizzazione rischi - Progettazione architetturale]{Attualizzazione rischi - Progettazione architetturale}
+\end{table}
+\newpage
+
+\subsection{Progettazione in dettaglio e codifica} \label{pdatt}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| p{3cm} | p{6cm} | p{6cm}|}
+		\hline
+		\textbf{Rischio} & \textbf{Conseguenze} & \textbf{Soluzione} \\
+		\hline
+		\textbf{Tecnologie da usare} & \begin{itemize}
+											\item Spring Data è risultato poco flessibile;
+											\item Spring Batch non è risultato ottimale;
+											\item rallentamenti in progettazione e codifica.
+										\end{itemize} & Il membro più competente si è occupato della progettazione di base del prodotto finale. Infatti essa richiedeva il solo utilizzo di queste complesse tecnologie \\ \hline
+		\textbf{Disponibilità temporali} & \begin{itemize}
+												\item impegni in Francia;
+												\item competizioni di programmazione;
+												\item problemi familiari;
+												\item problemi di salute.
+											\end{itemize} & Posticipo della revisione di qualifica in data 2018-05-14		 \\ \hline
+		\textbf{Contrasti nel gruppo} & \begin{itemize}
+											\item componente assente ingiustificato per una settimana;
+											\item invio di e-mail ai Committenti senza previa consultazione dell'intero gruppo;
+											\item alcuni membri hanno dovuto lavorare maggiormente a causa dei problemi di disponibilità temporale.
+										\end{itemize} & \begin{itemize}
+															\item utilizzo dei canali di comunicazione;
+															\item i membri che hanno lavorato meno o hanno commesso errori sono stati richiamati dal Responsabile
+														\end{itemize}												 \\ \hline
+		\textbf{Strumenti Software} & Indecisione tra tre programmi (Astah, Papyrus, Visual Paradigm) per la realizzazione dei diagrammi di classe e di sequenza & È stato selezionato il programma Visual Paradigm 15.0 Community Edition per facilità di utilizzo e intuizione \\
+		\hline
+	\end{tabular}
+	\caption[Attualizzazione rischi - Progettazione in dettaglio e codifica]{Attualizzazione rischi - Progettazione in dettaglio e codifica}
+\end{table}
+\newpage
+
+\subsection{Validazione e collaudo} \label{valEcoll}
+In questo periodo il gruppo non ha riscontrato rischi. La progettazione e la codifica del prodotto finale sono state terminate nel periodo
+precedente, per cui in periodo di validazione e collaudo è avanzato tempo per la sola correzione dei documenti che ha richiesto due settimane.
+Il tempo pianificato è bastato per lo svolgimento di tutte le attività e non ci sono stati contrasti interni nel gruppo.

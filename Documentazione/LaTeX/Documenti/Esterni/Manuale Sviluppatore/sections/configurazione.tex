@@ -1,0 +1,103 @@
+\section[Configurazione ambiente di lavoro]{Configurazione dell'ambiente di lavoro}
+\label{settings}
+
+	Per modificare il comportamento del prodotto è necessario modificarne le impostazioni;
+	queste sono contenute nel file \lstinline[columns=fixed]{src/main/resources/application.properties}.
+
+
+	\subsection{Configurazione del server Elasticsearch}
+	
+		Viene qui descritto come cambiare le impostazioni del server Elasticsearch nel caso 
+		si voglia modificare i parametri di default scelti da \GroupName{}.
+
+		Per cambiare l'\eng{host} e la porta da utilizzare per comunicare con Elasticsearch, modificare la seguente chiave:
+		\begin{lstlisting}
+		spring.data.jest.uri=http://localhost:9200
+		\end{lstlisting}
+		
+		Per modificare gli indici e la tipologia di record per le differenti configurazioni modificare le seguenti chiavi:
+		\begin{lstlisting}[language=Python]
+		# Metrics Generation
+		app.metrics.config.index=openapm-config-metrics
+		app.metrics.config.type=config_metrics
+
+		# Baseline Generation
+		app.baselines.config.index=openapm-config-baselines
+		app.baselines.config.type=config_baselines
+		app.baselines.data_points=4
+
+		# Critical Events Checking
+		app.alerts.config.index=openapm-config-alerts
+		app.alerts.config.type=config_alerts
+		app.alerts.evaluate.debounce=5000
+
+		# Remediation Actions
+		app.actions.config.index=openapm-config-actions
+		app.actions.config.type=config_actions
+		\end{lstlisting}
+
+		La chiave \lstinline[columns=fixed]{app.alerts.evaluate.debounce} indica dopo quanto tempo dall'\eng{update} 
+		dell'ultima metrica vada ricalcolato lo stato dell'\eng{alert}.
+
+	\subsection{Configurazione del database} \label{impostazionidatabase}
+	
+		È possibile configurare database diversi (anche di tipologie diverse) per ogni tipologia di dato 
+		(trace, metriche, baseline e allarmi scattati).\\
+		Per farlo è sufficiente configurare le seguenti chiavi:\\
+		\begin{lstlisting}[language=Python]
+		app.traces.database     # Trace
+		app.metrics.database    # Metriche
+		app.baselines.database  # Baseline
+		app.actions.database    # Allarmi scattati
+		\end{lstlisting}
+
+		Ogni chiave avrà una sottochiave \lstinline[columns=fixed]{driver} indicante la tipologia di database, 
+		ed un insieme di altri chiavi dipendenti dal tipo di database.
+
+		Nel caso si voglia aggiungere ad \ProjectName{} ulteriori database a quelli già disponibili,
+		la §\ref{newdatabase} descrive la procedura necessaria per implementarne di nuovi.
+
+		\subsubsection{Database disponibili}
+
+			\myparagraph{Elasticsearch}
+
+				\textbf{Driver}: \lstinline[columns=fixed]{elasticsearch}
+
+				\textbf{Parametri richiesti:}
+				\begin{itemize}
+					\item \lstinline[columns=fixed]{host}: Host per la connessione con il server Elasticsearch;
+					\item \lstinline[columns=fixed]{port}: Porta per la connessione con il server Elasticsearch;
+					\item \lstinline[columns=fixed]{protocol}: Protocollo di connessione (http oppure https);
+					\item \lstinline[columns=fixed]{timestamp}: Campo da utilizzare all'interno di 
+							un documento per determinare quando è stato creato;
+					\item \lstinline[columns=fixed]{type}: Tipologia di documenti da indicare ad Elasticsearch;
+					\item \lstinline[columns=fixed]{keepalive}: Tempo in secondi prima di considerare una chiamata fallita.				
+				\end{itemize}
+	
+				\textbf{Esempio:}
+				\begin{lstlisting}
+		app.traces.database.driver=elasticsearch
+		app.traces.database.host=localhost
+		app.traces.database.port=9200
+		app.traces.database.protocol=http
+		app.traces.database.timestamp=@timestamp
+		app.traces.database.type=spans
+		app.traces.database.keepalive=60
+				\end{lstlisting}
+
+	\subsection{Configurazione del server mail}
+
+		Per l'invio di email viene utilizzato Spring Mail. Per una descrizione 
+		più approfondita di questo framework esterno si rimanda alla sua documentazione
+		presente all'indirizzo \url{https://bit.ly/2J81irm} in \S{}6.
+
+		\textbf{Esempio:}
+		\begin{lstlisting}
+		spring.mail.host=localhost
+		spring.mail.port=1025
+		spring.mail.username=
+		spring.mail.password=
+		spring.mail.properties.mail.smtp.auth=false
+		spring.mail.properties.mail.smtp.from=no-reply@example.com
+		spring.mail.properties.mail.smtp.starttls.enable=false
+		\end{lstlisting}

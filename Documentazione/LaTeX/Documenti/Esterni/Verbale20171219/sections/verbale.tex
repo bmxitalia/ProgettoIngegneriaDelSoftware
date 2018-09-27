@@ -1,0 +1,73 @@
+\section{Informazioni generali}
+
+\subsection{Informazioni incontro}
+\begin{itemize}
+\item \textbf{Luogo}: \Proponente{}, Corso Stati Uniti 14/bis, Padova (PD);
+\item \textbf{Data}: 19 Dicembre 2017;
+\item \textbf{Ora}: 16:30 - 18:30;
+\item \textbf{Componenti interni}: \Leonardo, \Tommaso, \Carlo, \Mattia, \Luca, \Cristian, \Isacco;
+\item \textbf{Componenti esterni}: Stefano Bertolin, Stefano Lazzaro.
+\end{itemize}
+
+\subsection{Argomenti}
+Durante l'incontro sono stati presentati, da parte della Proponente, gli obbiettivi di \ProjectName{}.
+Sono stati inoltre definiti alcuni requisiti tecnici e progettuali.
+
+\section{Riassunto incontro}
+Sono stati presentati i seguenti requisiti obbligatori per il progetto \ProjectName{}:
+\begin{itemize}
+\item motore di generazione di \glossaryItem{metrica} da \glossaryItem{trace}: definizione di metriche monitorabili a
+partire da query su trace;
+\item motore di generazione di \glossaryItem{baseline} da metrica: calcolo di baseline a partire da un set di metriche
+con \glossaryItem{granularità} configurabile;
+\item motore di gestione \glossaryItem{critical event}: gestione di \glossaryItem{policy} sui valori delle metriche con
+soglie configurabili.
+\end{itemize}
+
+Sono stati espressi come desiderabili i seguenti requisiti:
+\begin{itemize}
+\item set di \glossaryItem{azioni di remediation}: configurazione di set di azioni da eseguire in risposta ad un
+critical event.
+\end{itemize}
+
+Sono stati considerati opzionali i seguenti requisiti:
+\begin{itemize}
+\item \glossaryItem{Machine Learning}: applicazione di algoritmi di Machine Learning alle metriche;
+\item Configurazione della schedulazione di una procedura \glossaryItem{batch}: l'amministratore di sistema deve
+poter configurare la schedulazione delle procedure da lanciare.
+\end{itemize}
+
+\newpage
+
+Sono stati posti i seguenti vincoli progettuali:
+\begin{itemize}
+\item Utilizzo di Java 8;
+\item Utilizzo dello Stack \glossaryItem{Kibana}/\glossaryItem{ElasticSearch} 6;
+\item Si richiede il salvataggio delle configurazioni delle procedure su ElasticSearch;
+\item Disaccoppiamento tra logica applicativa e tecnologie usate.
+\end{itemize}
+
+Sono state consigliate le seguenti tecnologie:
+\begin{itemize}
+\item \glossaryItem{Spring Batch}.
+\end{itemize}
+
+\subsection{Riepilogo decisioni}
+\begin{center}
+    \begin{tabular}{c | c}
+        \centering
+        \rowcolor[gray]{.9} { \textbf{Codice} } & { \textbf{Decisione} } \\ 
+        \hline
+        \rowcolor[gray]{.8} VE\_20171219.1 & Requisito obbligatorio : Motore di generazione metrica da trace \\
+        \rowcolor[gray]{.9} VE\_20171219.2 & Requisito obbligatorio : Motore di generazione baseline metrica \\
+        \rowcolor[gray]{.8} VE\_20171219.3 & Requisito obbligatorio : Motore di gestione critical event \\
+        \rowcolor[gray]{.9} VE\_20171219.4 & Requisito desiderabile : Set di azioni di remediation \\
+        \rowcolor[gray]{.8} VE\_20171219.5 & Requisito opzionale : Machine Learning \\
+        \rowcolor[gray]{.9} VE\_20171219.6 & Requisito opzionale : Configurazione della schedulazione delle procedure \\
+        \rowcolor[gray]{.8} VE\_20171219.7 & Vincolo : Java 8 \\
+        \rowcolor[gray]{.9} VE\_20171219.8 & Vincolo : Stack Kibana/ElasticSearch 6 \\
+        \rowcolor[gray]{.8} VE\_20171219.9 & Vincolo : Configurazioni salvate su ElasticSearch \\
+        \rowcolor[gray]{.9} VE\_20171219.10 & Vincolo : Disaccoppiamento tra logica applicativa e tecnologie usate \\
+        \rowcolor[gray]{.8} VE\_20171219.11 & Consiglio : Utilizzo di Spring Batch \\
+    \end{tabular}
+\end{center}

@@ -1,0 +1,44 @@
+\subsection{Baselines}
+
+	\subsubsection{Configurazione di una baseline}
+
+	Di seguito viene riportata un configurazione di esempio per una baseline, con la successiva spiegazione dei vari campi che l'utente può configurare:
+
+	\begin{lstlisting}[style=json]
+
+		{
+			"name": "http-duration-by-url",
+			"metrics_index": "#'openapm-metrics-'yyyy.MM.dd",
+			"baselines_index": "openapm-baselines",
+			"strategy": "daily",
+			"filters": [
+				{
+				"operator": "=",
+				"operands": [
+					"name",
+					"'http-duration-by-url'"
+					]
+				}
+			],
+			"aggregation": {
+				"operands": [
+				"group"
+				]
+			},
+			"calculation_field": "value"
+		}
+	\end{lstlisting}
+
+	La configurazione di cui sopra va inserita nell'indice di configurazione baseline che di default è: \textit{openapm-config-baselines} \\
+	I campi configurabili sono quindi:
+
+	\begin{itemize}
+                \item \textbf{name:} specifica il nome per la baseline generata, rappresenterà il valore del campo `baseline' della metrica;
+                \item \textbf{metrics\_index:} specifica l'indice o la tabella da cui prelevare le metriche;
+                \item \textbf{baselines\_index:} specifica l'indice o la tabella in cui salvare le baseline;
+                \item \textbf{strategy:} specifica un identificatore per la strategia da utilzzare;
+                \item \textbf{filters:} specifica una lista di operatori filtro per selezionare le metriche da utilizzare per il calcolo;
+                \item \textbf{aggregation:} specifica un operatore che, dato un unico gruppo di metriche, le divida in tanti sottogruppi;
+                \item \textbf{calculation\_field:} specifica il campo con il valore numerico da utilizzare per il calcolo della baseline.
+	\end{itemize}
+

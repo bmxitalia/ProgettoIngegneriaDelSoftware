@@ -1,0 +1,125 @@
+\section{Calcolo ed uso delle metriche}
+\label{metricheDettaglio}
+
+	In questa sezione si provvederà alla descrizione delle metriche, presenti nella §\ref{subsec:metriche}, 
+	che permettono di quantificare e valutare la qualità dei processi e dei prodotti di \GroupName{}.
+	All'interno della spiegazione di ogni metrica verrà illustrato quando, come e su cosa viene fatta 
+	la misurazione durante il processo di verifica.
+
+	\subsection{Misure e metriche per i processi}
+
+		\subsubsection{Schedule Variance}
+			La Schedule Variance è un indice di efficienza che ha come oggetto la durata temporale 
+			di un processo o di un'attività. Questa metrica aiuta il Responsabile di Progetto nella 
+			creazione dei prospetti orari inseriti nei consuntivi di periodo, e di conseguenza aiuta 
+			il team nell'analisi dell'utilizzo di risorse temporali.
+
+			Il calcolo della Schedule Variance avviene in questo modo:
+			\[SV = \mbox{\textit{data conclusione reale}} - \mbox{\textit{data conslusione preventivata}}\]
+
+
+			Entrambe le date si riferiscono alla conclusione dell'attività o del processo.
+
+		\subsubsection{Cost Variance}
+			La Cost Variance, o Variazione di Costo, è una metrica che analizza il costo, nonché le risorse 
+			legate ad un processo o ad un attività. Essa può essere influenzata anche dalla metrica sopracitata.
+
+			La Variazione di Costo viene così calcolata:
+			\[ CV = \mbox{\textit{costo delle risorse effettivo}} - \mbox{\textit{costo delle risorse preventivato}}\]
+
+
+		\subsubsection{SPICE}
+			Al termine di ogni periodo, il \glossaryItem{team} \GroupName{} provvederà alla valutazione della 
+			qualità dei processi tramite lo standard ISO/IEC 15504 conosciuto come SPICE.
+			Lo standard SPICE, ed i livelli di maturità, vengono illustrati in maniera completa ed approfondita 
+			nell'Appendice \ref{app:standard}.
+
+\newpage
+
+	\subsection{Misure e metriche per i prodotti}
+		\subsubsection{Misure e metriche per i documenti}
+		%----------------
+		\myparagraph{Indice Gulpease}
+			Per analizzare la leggibilità della documentazione prodotta, il team \GroupName{} ha deciso di 
+			avvalersi dell'\glossaryItem{indice Gulpease}. Questo è stato creato per venire incontro alla 
+			complessità della lingua italiana, non contemplata in altri indici, come l'\glossaryItem{indice di Flesch}.
+
+			L'indice Gulpease viene calcolato tramite questa formula:
+			\[ IG = 89 + \frac{(300 \times \mbox{\textit{numero delle frasi}}) - (10 \times \mbox{\textit{numero delle lettere}})}{\mbox{\textit{numero delle parole}}} \]
+
+			Il valore ottenuto indicherà la leggibilità del testo e può variare da $0$, indice di bassissima 
+			leggibilità, a $100$, indice di ottima leggibilità.
+
+	\subsubsection{Misure e metriche per il software}
+		Al fine di poter correttamente quantificare e valutare la qualità del prodotto software, il 
+		team \GroupName{} ha deciso utilizzare diverse metriche. Gran parte delle metriche indicate in 
+		questa sezione verranno riviste ed aggiornate nel corso dei successivi periodi.
+
+		\myparagraph{Grado di accoppiamento}
+			Questa metrica indica una misura la dipendenza di un componente del prodotto con le altri parti di \ProjectName{}.\\
+			Per questo calcolo si utilizza:
+			\begin{description}
+				\item[Structural Fan-Out (SFOUT): ] 
+					il grado di accoppiamento efferente permette di avere una 
+					visione del numero di moduli che usufruiscono della componente oggetto di analisi.
+					Il valore di questo indice è semplicemente dato dal conteggio delle componenti indicate 
+					poco sopra. Un valore molto basso può indicare una scarsa utilità del modulo analizzato, 
+					all'opposto un grado troppo alto potrebbe indicare un pericoloso livello di dipendenza.
+				
+				\item[Structural Fan-In (SFIN): ]
+					il grado di accoppiamento afferente, così come l'accoppiamento efferente, ha come oggetto di 
+					analisi il numero di moduli che sono legati alla componente in analisi.
+					Questa volta si prende in considerazione il numero di moduli esterni che vengono utilizzati.
+					Un indice ottimale dovrebbe avere un valore di $0$ o $1$, questo perché minore è il suo valore, 
+					più il modulo è indipendente ai cambiamenti del resto del sistema. Un valore eccessivamente alto 
+					è indice di troppa dipendenza rispetto al resto del sistema.
+			\end{description}
+
+		\myparagraph{Code Coverage}
+			Il code coverage è una metrica che, sfruttando una misura detta Logical Source Lines of Code (Logical SLOC), 
+			indica la percentuale di statements coperti dai test.\\
+			
+			La Logical SLOC è una metrica che dà un idea della grandezza del prodotto software contando il numero di linee di codice. 
+			Il team ha scelto di utilizzare la variante definita Logical SLOC, andando quindi a contare solamente 
+			il numero di \glossaryItem{statements} all'interno del codice.\\			
+
+			Il valore della code coverage è così calcolato:
+			\[ CC = \frac{\mbox{\textit{Numero di statement coperti da test}}}{\mbox{\textit{Logical SLOC}}} \times 100 \]
+			% CC = SLOC / Num. Statement coperti da test * 100
+
+		\myparagraph{Rapporto linee di commento per linee di codice}
+			Un indice di buona manutenibilità del codice potrebbe essere il rapporto tra \glossaryItem{Physical SLOC} 
+			e numero di linee di commento all'interno dello stesso.
+
+			Il valore viene espresso in percentuale e viene così calcolato:
+			\[ RLCLC = \frac{\mbox{\textit{Numero di linee di commento}}}{\mbox{\textit{Numero di linee di codice totali}}} \times 100 \]
+			% RLCLC = Num. linee di codice totali / Num. linee di commento * 100
+
+		\myparagraph{Complessità ciclomatica}
+			L'indice di complessità di un programma aiuta ad identificare il numero di test necessari al raggiungimento 
+			di un coverage completo. Questa metrica software può essere applicata anche a packages, moduli, metodi o classi.
+
+			Il calcolo avviene sfruttando il \glossaryItem{grafo di controllo di flusso} e l'indice non è altro che 
+			il numero di cammini indipendenti attraverso il codice sorgente. La formula è quindi la seguente:
+			\[ v(G) = e - n + p \]
+			% v(G)=e-n+2p
+
+			Dove:
+			\begin{itemize}
+				\item \textbf{n:} è il numero di nodi del grafo, nonché il numero di tutti i gruppi indivisibili di istruzioni;
+				\item \textbf{e:} rappresenta il numero di archi del grafo, cioè il numero di collegamenti tra due 
+				nodi tali che, il nodo seguente possa essere eseguito immediatamente dopo il nodo preso di riferimento;
+				\item \textbf{p:} è il numero di componenti connesse.
+			\end{itemize}
+
+		\myparagraph{Percentuale superamento test}
+			Questa metrica indica quanti dei test implementati hanno esito positivo e può essere ottenuta così:
+			\[ PST = \frac{\mbox{\textit{Numero test superati}}}{\mbox{\textit{Numero test implementati}}} \times 100 \]
+
+
+		\myparagraph{Requisiti obbligatori soddisfatti}
+			Questa metrica aiuta il team a capire in che quantità sono stati soddisfatti i requisiti obbligatori 
+			indicati in'\vAnalisiDeiRequisiti{}.
+
+			Il valore viene espresso in percentuale e viene calcolato come segue:
+			\[ROS = \frac{\mbox{\textit{Num. Requisiti obbligatori soddisfatti}}}{\mbox{\textit{Num. Requisiti obbligatori individuati}}}\times 100\]

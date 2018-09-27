@@ -1,0 +1,87 @@
+\section{Guida all'uso di Git} \label{guidaGit}
+
+                Questa appendice contiene una serie di comandi Git che permetterà ai membri del team di
+                progetto di interagire con \glossaryItem{GitHub}:
+
+                    \begin{itemize}
+                        \item \textbf{\textit{git clone}}: comando che permette di clonare il repository
+                        remoto su GitHub in locale.
+                        La sintassi è \textit{git clone indirizzoRepository} dove indirizzoRepository è
+                        l'indirizzo raggiungibile tramite il menù a tendina ``Clone or Download" su GitHub;
+                        \item \textbf{\textit{git add nomeFile}}: comando che aggiunge il file alla lista
+                        dei file tracciati da Git, contenuti nell'index.
+                        Il comando deve essere utilizzato per aggiungere nuovi file o per proporre la modifica
+                        di file già esistenti in una versione successiva. Se si modifica un file e non si
+                        esegue questo comando, le modifiche non verranno apportate nella versione successiva.
+                        Il comando può essere usato per aggiungere una cartella oppure si può eseguire
+                        \textit{git add .} per aggiungere tutti i file, comprese le sotto cartelle;
+                        \item \textbf{\textit{git pull}}: comando che permette di aggiornare il contenuto
+                        del repository locale con il contenuto di quello remoto. In questo modo eventuali
+                        modifiche attuate da altre persone verranno riportate sul repository locale e si
+                        può lavorare sui file più recenti;
+                        \item \textbf{\textit{git status}}: comando che visualizza lo stato dei file,
+                        dividendoli in tre gruppi:
+
+                            \begin{enumerate}
+                                \item \textbf{File non tracciati}: mostra i file che non sono mai stati inseriti
+                                nel controllo versione di Git;
+                                \item \textbf{File modificati ma non aggiornati}: mostra i file modificati,
+                                rispetto al commit precedente, che non sono stati aggiunti tramite
+                                \textit{git add} e che quindi non verranno inseriti nel prossimo commit;
+                                \item \textbf{File modificati pronti per il commit}: mostra i file modificati,
+                                rispetto al commit precedente, che sono stati aggiunti tramite \textit{git add}
+                                e che quindi sono pronti per il commit.
+                            \end{enumerate}
+
+                        \item \textbf{\textit{git diff}}: mentre \textit{git status} mostra i file che sono stati
+                        modificati, per entrare nei dettagli delle righe modificate è necessario
+                        utilizzare \textit{git diff}.
+                        Il comando può essere utilizzato in due modalità:
+
+                            \begin{enumerate}
+                                \item \textbf{\textit{git diff}}: mostra le righe che sono state cambiate nei
+                                file non ancora preparati per la commit, confrontati con la copia
+                                presente nell'ultima commit;
+                                \item \textbf{\textit{git diff --staged}}: mostra le righe che sono state
+                                cambiate nei file preparati per la commit, confrontati con la
+                                copia presente nell'ultima commit.
+                            \end{enumerate}
+
+                        \item \textbf{\textit{git commit -m ``Messaggio commit"}}: comando che permette di
+                        rendere definitivi i file aggiunti o modificati tramite il comando \textit{git add}.
+                        Se non si lancia il comando \textit{git commit} e si esegue \textit{git push}, non
+                        verranno caricate eventuali modifiche o file aggiunti al repository locale sul
+                        repository remoto. \textit{-m} è l'opzione per inserire un messaggio significativo
+                        (obbligatorio) per far comprendere ai membri del team la tipologia di modifiche che
+                        sono state effettuate;
+                        \item \textbf{\textit{git log}}: comando che permette di visualizzare lo storico
+                        dei commit;
+                        \item \textbf{\textit{git checkout}}: comando che permette di fare cose differenti
+                        a seconda di come viene utilizzato:
+
+                            \begin{enumerate}
+                                \item \textbf{\textit{git checkout -b nomeBranch}}: crea un nuovo
+                                branch chiamato ``nomeBranch". Una volta creato il branch, tutti
+                                i comandi che verranno lanciati saranno eseguiti su quel branch;
+                                \item \textbf{\textit{git checkout nomeBranch}}: permette di spostarsi sul
+                                branch ``nomeBranch".
+                            \end{enumerate}
+
+                        \item \textbf{\textit{git merge nomeBranch}}: comando che permette di riportare le modifiche apportate a ``nomeBranch" nel branch attualmente selezionato.
+                        Il comando deve essere lanciato dal branch master;
+                        \item \textbf{\textit{git push}}: comando che aggiorna il repository remoto
+                        sovrascrivendolo con il repository locale;
+                        \item \textbf{configurazioni utente}: se si tratta della prima volta che si utilizza
+                        Git allora al primo tentativo di commit verrà lanciato un errore relativo al fatto
+                        che non si sono settati il nome utente e la e-mail.
+                        Per far questo si utilizzano i comandi:
+
+                            \begin{enumerate}
+                                \item \textbf{\textit{git config --global user.name ``nomeUtente"}}: comando che
+                                permette di configurare Git con il nostro nome. In questo modo ogni qualvolta che
+                                si effettuerà una commit, il nostro nome verrà associato alla commit;
+                                \item \textbf{\textit{git config --global user.email ``e-mail"}}: comando identico
+                                al precedente ma che permette di configurare l'indirizzo e-mail.
+                            \end{enumerate}
+
+                    \end{itemize}

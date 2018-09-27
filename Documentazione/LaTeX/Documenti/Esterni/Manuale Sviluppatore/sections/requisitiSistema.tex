@@ -1,0 +1,32 @@
+\section{Requisiti di sistema} \label{requisiti}
+
+	\subsection{Requisiti software}
+		
+		Per l'utilizzo di \ProjectName{} è necessario avere le seguenti componenti software installate 
+		nella stessa macchina in cui è installato il prodotto:	
+			
+		\begin{itemize}
+			\item Sistema operativo: il prodotto è funzionante con Ubuntu 16.04 LTS, idealmente è compatibile con
+				qualsiasi distribuzione Linux;
+			\item Java 8 o superiore;
+			\item Elasticsearch 6 o superiori.
+		\end{itemize}
+		
+		Il prodotto mette a disposizione anche la possibilità di inviare delle email, allo scatenarsi di eventi; per tanto nel caso di utilizzo di questa
+		funzionalità, è necessario configurare:
+
+		\begin{itemize}
+			\item Java Mail Sender;
+			\item Spring Mail.
+		\end{itemize}
+					
+\section{Installazione e avvio} \label{installazione}
+
+	Per l'installazione e l'avvio di \ProjectName{} è sufficiente seguire i seguenti passi:
+	\begin{enumerate}
+		\item Scaricare il codice sorgente;
+		\item Configurare il file \lstinline[columns=fixed]{application.properties} (procedimento descritto in §\ref{settings});
+		\item Eseguire il comando \lstinline[columns=fixed]{./gradlew bootJar} per ottenere un file jar eseguibile;
+		\item Copiare il jar ottenuto (\verb=build/libs/openapm-{VERSION}.jar=) dove desiderato;
+		\item Avviare il file jar: \verb=java -jar openapm-{VERSION}.jar=.
+	\end{enumerate}

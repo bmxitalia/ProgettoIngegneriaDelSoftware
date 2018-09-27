@@ -1,0 +1,55 @@
+\section{Informazioni generali}
+
+\subsection{Informazioni incontro}
+\begin{itemize}
+\item \textbf{Luogo}: \Proponente{}, Corso Stati Uniti 14/bis, Padova (PD);
+\item \textbf{Data}: 26 Aprile 2018;
+\item \textbf{Ora}: 10:00 - 12:30;
+\item \textbf{Componenti interni}: \Tommaso, \Mattia, \Isacco, \Luca, \Leonardo, \Cristian, \Carlo;
+\item \textbf{Componenti esterni}: Stefano Bertolin, Stefano Lazzaro.
+\end{itemize}
+
+\subsection{Argomenti}
+Durante l'incontro è stata presentata una demo del prodotto finale alla Proponente.
+
+\section{Riassunto incontro}
+Durante l'incontro è stato presentato tutto il lavoro realizzato fino ad ora. Sono stati presentati nei dettagli i seguenti componenti:
+\begin{itemize}
+	\item struttura di base dell'applicativo (scheduler, dispatcher, job);
+	\item componente di generazione metriche;
+	\item componente di generazione baseline;
+	\item componente di gestione alert;
+	\item componente di gestione azioni di rimedio;
+	\item realizzazione di operatori e strategie per il calcolo delle baseline;
+	\item realizzazione di models e repositories.
+\end{itemize}
+Inoltre è stato illustrato il funzionamento dell'applicazione, in particolare:
+\begin{itemize}
+	\item come far partire l'applicativo da riga di comando;
+	\item come configurare le varie componenti dell'applicativo.
+\end{itemize}
+Durante l'incontro sono emerse delle problematiche relative al framwork Spring, in particolare:
+\begin{itemize}
+	\item Spring Data è risultato poco flessibile;
+	\item Spring Batch è risultato non ottimale;
+	\item è stato rilevato un memory bound su grandi moli di dati.
+\end{itemize}
+Si è discusso con la Proponente di quali potevano essere le soluzioni per risolvere tali problemi e sono stati assegnati i compiti atti alla loro risoluzione. In particolare, è stata trovata una soluzione per il primo problema. In seguito alla discussione, è emerso che per sistemare gli altri due problemi sarebbe stato necessario riscrivere tutta l'applicazione senza Spring Batch. Non essendoci il tempo materiale per lo svolgimento di tale compito, la Proponente ha deciso di trascurare questi difetti.\\
+Nonostante la presenza di tali problemi, la Proponente è stata soddisfatta del prodotto realizzato.\\
+Infine, vista la difficoltà nel stilare dei test di accettazione per il prodotto finale, essendo l'attore utilizzatore non umano, è stato richiesto alla Proponente di fornire al gruppo dei test di accettazione che verranno poi implementati dallo stesso.\\
+In seguito all'incontro sono stati assegnati i seguenti task:
+\begin{itemize}
+	\item Ricerca di una soluzione per il problema di Spring Data: \Cristian;
+	\item Realizzazione dei test di sistema dopo aver ricevuto un riscontro da parte della Proponente: \Luca.
+\end{itemize}
+
+\subsection{Riepilogo decisioni}
+\begin{center}
+    \begin{tabular}{c | p{12cm}}
+        \centering
+        \rowcolor[gray]{.9} { \textbf{Codice} } & { \textbf{Decisione} } \\ 
+        \hline
+        \rowcolor[gray]{.8} VE\_20180426.1 & Trovare una soluzione per il problema di Spring Data - \Cristian \\
+        \rowcolor[gray]{.9} VE\_20180426.2 & Realizzazione dei testi di sistema in seguito a riscontro da parte della Proponente - \Luca \\
+    \end{tabular}
+\end{center}

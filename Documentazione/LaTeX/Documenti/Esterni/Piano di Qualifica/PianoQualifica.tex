@@ -1,0 +1,69 @@
+\input{../../../LatexLayout/global.tex}
+\input{./res/local.tex}
+
+\title{\PianoProgetto}
+\author{\GroupName}
+
+\date{2 Gennaio 2018}
+
+\begin{document}
+
+	\frenchspacing
+
+	\makeFrontPage
+	
+	\input{./res/changelog.tex}
+	\newpage
+	
+	\tableofcontents
+	\newpage
+	
+ 	\renewcommand{\listtablename}{Tabelle}
+	\listoftables
+	\newpage
+	
+	\renewcommand{\listfigurename}{Immagini}
+ 	\listoffigures
+	\newpage
+
+	\input{./sections/introduzione.tex}
+	\newpage
+
+	\input{./sections/strategiaQualita.tex}
+	\newpage
+
+	\input{./sections/testAccettazione.tex}
+	\newpage
+
+	\input{./sections/test.tex}
+	\newpage
+	
+	\input{./sections/testIntegrazione.tex}
+	\newpage
+	
+	\input{./sections/testUnita.tex}
+	
+	\input{./sections/testRegressione.tex}
+	\newpage
+	
+	\appendix	
+	
+	\input{./sections/resoconto.tex}
+	\newpage
+	
+	\input{./sections/esitoTest.tex}
+	\newpage
+	
+	\input{./sections/esitoTestIntegrazione.tex}
+	\newpage
+	
+	\input{./sections/esitoTestUnita.tex}
+	\newpage
+	
+	\input{./sections/esitoTestRiassunto.tex}
+	\newpage
+	
+	\input{./sections/valutazioneMiglioramento.tex}
+	\newpage
+	
+\end{document}

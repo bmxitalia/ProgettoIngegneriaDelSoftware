@@ -1,0 +1,50 @@
+\subsubsection{Test di integrazione}\label{testIntegrazione}
+	Questi test servono per verificare il corretto funzionamento delle varie componenti di \ProjectName{}, quando messe in relazione tra loro.
+	La strategia di integrazione incrementale dei test mira a ridurre l'area di ricerca nel caso incombano errori tra componenti.
+	Gli esiti dei test sono presenti in §\ref{esitoTestIntegrazione} e all'interno delle \vNormeDiProgetto{} è presente una descrizione della formazione del loro codice identificativo.	
+	
+	\myparagraph{Test di integrazione previsti}
+	
+	\begin{longtable}{  | >{\centering\arraybackslash}m{2.5cm} 
+						| >{\raggedright\arraybackslash}m{9cm} 
+						| >{\centering\arraybackslash}m{3.5cm} | }	
+        	\hline
+        		\textbf{Id Test} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+        	\endhead
+        					
+				TI1 & Verifica l’integrazione tra le componenti relative a \textit{openapm::jobs::baselines}, in particolare l’interazione con \textit{openapm::jobs}
+						& \donetext{} \\ \hline
+				TI2 & Verifica l’integrazione tra le componenti relative a \textit{openapm::jobs::metrics}
+						& \donetext{} \\ \hline
+				TI3 & Verifica l’integrazione tra le componenti relative a \textit{openapm::alerts}
+						& \donetext{} &
+				TI4 & & \donetext{} &
+				TI5 & & \donetext{} &
+				TI6 & & \donetext{}					
+						\\ \hline				
+				
+	\caption[Test di integrazione]{Tabella dei test di integrazione}			
+  		
+	\end{longtable}
+
+
+\myparagraph{Tracciamento test di integrazione - componenti}
+	\begin{longtable}{  | >{\centering\arraybackslash}m{2cm} 
+						| >{\centering\arraybackslash}m{11cm} | }
+			
+        	\hline
+        		\textbf{Id Test} & \textbf{Componente} \\ \hline
+        	\endhead
+        					
+				TI1 	& openapm\-::\-jobs\-::\-baselines
+						\\ \hline
+				TI2  	& openapm\-::\-jobs\-::\-metrics
+						\\ \hline
+				TI3 	& openapm\-::\-alerts & 
+				TI4		&	&
+				TI5		&	&
+				TI6		& \\ \hline
+				
+	\caption[Tracciamento test di integrazione - componenti]{Tabella di tracciamento integrazione - componenti}			
+  		
+	\end{longtable}

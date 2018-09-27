@@ -1,0 +1,68 @@
+\input{../../../LatexLayout/global.tex}
+\input{./res/local.tex}
+
+\title{\NormeProgetto}
+\author{\GroupName}
+
+\date{10 Dicembre 2017}
+
+\begin{document}
+
+    \frenchspacing
+
+    \makeFrontPage
+
+    \input{./res/changelog.tex}
+    \newpage
+
+    \tableofcontents
+    \newpage
+    
+    \renewcommand{\listtablename}{Tabelle}
+	\listoftables
+	\newpage
+
+    \renewcommand\listfigurename{Immagini}
+    \listoffigures
+    \newpage
+
+    \input{./sections/introduzione.tex}
+    \newpage
+
+    \input{./sections/fornitura.tex}
+    \newpage
+
+    \input{./sections/sviluppo.tex}
+    \newpage
+
+    \input{./sections/documentazione.tex}
+    \newpage
+
+    \input{./sections/configurazione.tex}
+    \newpage
+
+    \input{./sections/garanziaQualita.tex}
+    \newpage
+
+    \input{./sections/verifica.tex}
+    \newpage
+
+    \input{./sections/validazione.tex}
+    \newpage
+
+    \input{./sections/organizzazione.tex}
+    \newpage
+
+	\appendix
+	\input{./sections/listeControllo.tex}
+	\newpage
+	
+	\input{./sections/calcoloMetriche.tex}
+	\newpage
+	
+	\input{./sections/standardQualita.tex}
+    \newpage
+    
+    \input{./sections/guidaGit.tex}
+    \newpage
+\end{document}

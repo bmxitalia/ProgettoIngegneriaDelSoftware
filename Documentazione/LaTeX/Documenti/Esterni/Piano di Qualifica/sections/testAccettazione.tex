@@ -1,0 +1,42 @@
+\subsection{Specifica dei test} \label{sec:test}
+	\subsubsection{Test di accettazione}\label{testAccettazione}
+		A seguito di un incontro con la \glossaryItem{Proponente} \Proponente{} è stata richiesta loro l'identificazione dei Test di Accettazione.
+
+		Essi consistono nelle procedure che un utente deve poter seguire sul prodotto software finito affinché
+		lo si possa validare rispetto alle esigenze contrattuali descritte nel Capitolato.
+	
+		Questi test verranno svolti sotto la supervisione della Proponente e dei \glossaryItem{Committenti} durante il Collaudo, la
+		cui data prevista è il 15 giugno 2018, in concomitanza con la Revisione di Accettazione.
+
+		\myparagraph{Test TAFO1} L’amministratore di sistema deve poter avviare una procedura Batch secondo configurazioni temporali prestabilite. \\
+		L'utente può, modificando il file '\textit{application.properties}', configurare i vari parametri di esecuzione; le istruzioni sul come effettuare la configurazione sono disponibili nel \textit{Manuale Utente v2.0.0}. A quel punto si potrà proseguire generando e lanciando il file \textit{.jar} che avvierà la procedura batch.
+
+		\myparagraph{Test TAFO2} La procedura batch deve essere in grado di generare una metrica. \\
+		Una volta avviata la procedura batch, questa inizierà l'attività di monitoraggio delle traces nel database, raggruppandole e calcolando su di esse le metriche per poi salvarle in un indice, proprio come specifa la configurazione fornita. I risultati potranno dunque essere osservati ispezionando l'indice del database. 
+
+		\myparagraph{Test TAFO3} L’inserimento di una metrica deve scatenare la creazione di una baseline basata su tale metrica, da parte della procedura batch. \\
+		La procedura batch procederà in automatico a creare o aggiornare le baseline corrispettive delle metriche calcolate. Anche in questo caso i risultati sono osservabili ispezionando l'indice configurato per il salvataggio.
+
+		\myparagraph{Test TAFD5} Allo scattare di un critical event, la procedura batch, deve poter inviare una e-mail di notifica. \\
+		Il test verrà eseguito in questo modo:		
+		\begin{itemize}
+			\item stress dell'entità monitorata;
+			\item verifica del lancio di un critical event;
+			\item verifica della ricezione della e-mail.
+		\end{itemize}
+
+		\myparagraph{Test TAFD6} Allo scattare di un critical event, la procedura batch, deve poter memorizzare il critical event. \\
+		Il test verrà eseguito in questo modo:		
+		\begin{itemize}
+			\item stress dell'entità monitorata;
+			\item verifica del lancio di un critical event;
+			\item verifica del salvataggio delle informazioni del critical event su indice del database.
+		\end{itemize}
+
+		\myparagraph{Test TAFD7} Allo scattare di un critical event, la procedura batch, deve poter eseguire una procedura automatica. \\
+		Il test verrà eseguito in questo modo:		
+		\begin{itemize}
+			\item stress dell'entità monitorata;
+			\item verifica del lancio di un critical event;
+			\item verifica dell'esecuzione della procedura automatica.
+		\end{itemize}

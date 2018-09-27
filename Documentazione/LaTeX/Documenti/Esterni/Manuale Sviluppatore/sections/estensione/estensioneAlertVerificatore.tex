@@ -1,0 +1,36 @@
+\subsection{Implementare un nuovo verificatore per un alert}
+\label{newverificatore}
+	\subsubsection{Realizzare un nuovo verificatore per gli alert}
+	
+		Un verificatore è una classe che implementa l'interfaccia \lstinline{it.iks.openapm.alerts.verifiers.} \\
+		\lstinline{Verifier},
+		riceve in input i cambiamenti di stato di un alert e decide se o quando avviare un'azione di remediation.
+		È disponibile una classe astratta \lstinline{VerifierFactory} che implementa il costruttore aspettato.
+		I metodi necessari alla classe del nuovo valutatore per gli alert sono:
+			
+		\begin{itemize}
+		
+			\item \lstinline[language=Java]{void onChange(AlertState newState, AlertState oldState)}:
+				è una funzione che viene chiamata ad ogni cambio di stato di un alert per consentire
+				al verificatore di analizzare ogni nuovo stato dell'alert.
+		\end{itemize}
+	
+	\subsubsection{Registrare un nuovo verificatore per gli alert}
+	
+		Per collegare un identificatore alla classe corretta è necessario aggiungere un valore 
+		\lstinline[language=Java]{<String, Class<? extends Verifier>>} al campo \lstinline{verifiersTable} 
+		di \lstinline{it.iks.openapm.alerts.factories.}\\ \lstinline{VerifierFactory}. 
+		Per farlo è sufficiente aggiungere una riga nell'inizializzazione statica della variabile 
+		(poche righe dopo la sua dichiarazione).
+
+		Per esempio, per collegare l'identificatore \lstinline{termination} al verificatore \lstinline{TerminationVerifier} 
+		va aggiunta questa linea di codice:
+		\begin{lstlisting}[language=Java]
+	// VerifierFactory L37
+	tempVerifiersTable.put("termination", TerminationVerifier.class);
+		\end{lstlisting}
+		
+		La modifica della classe \verb=VerifierFactory= alla registrazione di ogni nuovo verificatore risulta un punto critico in 
+		questa classe, la soluzione a questo problema è l'implementazione di meccanismi di Reflection che permetterebbero
+		di modificare dinamicamente la classe \verb=VerifierFactory=.\\
+		Al momento \GroupName{} non ha ancora implementato questa soluzione.

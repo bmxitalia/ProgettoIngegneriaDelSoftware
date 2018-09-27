@@ -1,0 +1,4 @@
+Il vostro file .tex riguardante la vostra parte di documentazione va messo dentro sections.
+Non serve che modificate il file NormeProgetto.tex. Mi occuperò di farlo io non appena saranno presenti tutte le parti.
+Ciò che vi serve (modifiche al diario delle modifiche e comandi creati) è tutto nella cartella res. Il changelog è il file per compilare il diario delle modifiche mentre local è il file con i comandi.
+Per verificare la documentazione dovete creare il pdf del file NormeProgetto in locale. Il tutto da terminale con pdflatex -synctex=1 -interaction=nonstopmode NormeProgetto.tex

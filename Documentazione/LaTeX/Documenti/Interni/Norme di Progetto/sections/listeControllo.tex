@@ -1,0 +1,208 @@
+\section{Liste di controllo}
+\label{listeControllo}
+
+	Vengono qui presentate le liste di controllo da utilizzare nell'effettuare inspection.
+
+\subsection{Documenti}
+
+	\begin{longtable}{| m{4cm} | c |}
+	\hline
+		\Gape[0.4cm][0.4cm]{\textbf{Documento}}
+		&
+		\textbf{Lista di controllo}
+	\hline
+		Tutti i documenti
+		&
+		\begin{minipage}[c]{0.7\textwidth}
+			\vspace{0.2cm}
+			\begin{itemize}
+				\item conformità delle date al formato standard;
+				\item conformità degli elenchi puntati;
+				\item conformità nell'uso delle maiuscole nei titoli;
+				\item correttezza ortografica;
+				\item correttezza della rappresentazione degli accenti in \LaTeX{};
+				\item correttezza della spaziatura prima della punteggiatura;
+				\item correttezza delle versioni dei documenti riferiti;
+				\item presenza della data di ultima consultazione delle fonti web.
+			\end{itemize}
+			\vspace{0.2cm}
+		\end{minipage}
+	\hline
+		\AnalisiRequisiti{}
+		&
+		\begin{minipage}[c]{0.7\textwidth}
+			\vspace{0.2cm}
+			\begin{itemize}
+    				\item conformità alla struttura dei casi d'uso;
+    				\item correttezza diagrammi casi d'uso;
+    				\item correttezza enumerazione casi d'uso;
+    				\item verificabilità dei requisiti.
+			\end{itemize}
+			\vspace{0.2cm}
+		\end{minipage}
+	\hline
+		\PianoQualifica{}
+		&
+		\begin{minipage}[c]{0.7\textwidth}
+			\vspace{0.2cm}
+			\begin{itemize}
+				\item assenza di contenuti sovrapposti alle \NormeProgetto{}.
+			\end{itemize}
+			\vspace{0.2cm}
+		\end{minipage}
+	\hline
+		\NormeProgetto{}
+		&
+		\begin{minipage}[c]{0.7\textwidth}
+			\vspace{0.2cm}
+			\begin{itemize}
+				\item assenza di descrizioni di procedure in stile narrativo.
+			\end{itemize}
+			\vspace{0.2cm}
+		\end{minipage}
+	\hline
+		\Glossario{}
+		&
+		\begin{minipage}[c]{0.7\textwidth}
+			\vspace{0.2cm}
+			\begin{itemize}
+				\item assenza di voci spurie.
+			\end{itemize}
+			\vspace{0.2cm}
+		\end{minipage}
+    \hline
+	\caption[Lista di controllo per i documenti]{Lista di controllo per i documenti}
+	\end{longtable}
+
+\newpage
+
+\subsection{Diagrammi UML} \label{listeUML}
+
+	\begin{longtable}{| m{4cm} | c |}
+	\hline
+		\Gape[0.4cm][0.4cm]{\textbf{Diagramma}}
+		&
+		\textbf{Lista di controllo}
+	\hline
+		Diagrammi delle classi
+		&
+		\begin{minipage}[c]{0.7\textwidth}
+			\vspace{0.2cm}
+			\begin{itemize}
+				\item presenza della marcatura \textless \textless interface\textgreater \textgreater {}  se la classe è un'interfaccia;
+				\item presenza della marcatura \textless \textless enumeration\textgreater \textgreater {} se la classe è un'enumerazione;
+				\item presenza della marcatura \textless \textless create\textgreater \textgreater {} in caso di Factory pattern;
+				\item separazione tra nome della classe, attributi e metodi;
+				\item ogni attributo deve avere un nome e un tipo, scritti nella corretta sintassi;
+				\item ogni metodo deve avere un tipo di ritorno, ad eccezione del costruttore;
+				\item se un metodo ha una lista di parametri, allora ogni parametro deve avere nome e tipo, scritti nella corretta sintassi;
+				\item utilizzo corretto dei modificatori d'accesso (+, -, \#);
+				\item descrizione di design pattern tramite commenti con colorazione rossa;
+				\item colorazione arancione per classi e package esterni (framework o API);
+				\item l'impiego di classi esterne al package implica la modellazione tramite diagrammi di package;
+				\item sottolineatura per metodi e attributi statici;
+				\item dicitura in corsivo per le classi astratte;
+				\item dicitura maiuscola delle costanti di classe;
+				\item utilizzo della corretta sintassi per le classi parametriche;
+				\item esplicitazione del tipo con cui viene istanziata una classe parametrica nella dipendenza;
+				\item utilizzo del corretto tipo di relazione tra le classi;
+				\item verificare che non siano stati introdotti concetti legati al software.
+			\end{itemize}
+			\vspace{0.2cm}
+		\end{minipage}
+	\hline
+		Diagrammi di attività
+		&
+		\begin{minipage}[c]{0.7\textwidth}
+			\vspace{0.2cm}
+			\begin{itemize}
+				\item confluire di flussi mediante nodo di \textit{merge};
+				\item presenza freccia entrante nei nodi di \textit{timeout}.
+			\end{itemize}
+			\vspace{0.2cm}
+		\end{minipage}
+	\hline
+		Diagrammi di sequenza
+		&
+		\begin{minipage}[c]{0.7\textwidth}
+			\vspace{0.2cm}
+			\begin{itemize}
+				\item presenza di un nome per ogni istanza di classe;
+				\item presenza di una barra di attivazione se un oggetto è attivo;
+				\item utilizzo della freccia piena se un messaggio è una chiamata a un metodo di un oggetto;
+				\item utilizzo del corretto operatore nei frame di iterazione;
+				\item presenza della marcatura \textless \textless create\textgreater \textgreater {} in caso di messaggio di creazione di un oggetto;
+				\item presenza della marcatura \textless \textless destroy\textgreater \textgreater {} in caso di messaggio di distruzione di un oggetto;
+				\item utilizzo della corretta sintassi per i vari tipi di messaggi.
+			\end{itemize}
+			\vspace{0.2cm}
+		\end{minipage}
+	\hline
+	\caption[Lista di controllo per i diagrammi UML]{Lista di controllo per i diagrammi UML}
+	\end{longtable}
+
+\subsection{Codice} \label{listeCodice}
+
+	\begin{longtable}{| m{4cm} | c |}
+	\hline
+		\Gape[0.4cm][0.4cm]{\textbf{Parte del software}}
+		&
+		\textbf{Lista di controllo}
+	\hline
+		Tutto il codice
+		&
+		\begin{minipage}[c]{0.7\textwidth}
+			\vspace{0.2cm}
+			\begin{itemize}
+				\item utilizzo dello stile di default di IntellJ IDEA;
+				\item ogni metodo pubblico deve avere un JavaDoc con una breve descrizione;
+				\item ogni classe deve avere un JavaDoc con una breve descrizione;
+				\item i metodi auto-generati devono essere in coda alle classi;
+				\item i metodi auto-generati devono essere opportunamente segnalati;
+				\item non devono essere specificate versioni ridondanti delle dipendenze esterne.
+			\end{itemize}
+			\vspace{0.2cm}
+		\end{minipage}
+	\hline
+		Spring
+		&
+		\begin{minipage}[c]{0.7\textwidth}
+			\vspace{0.2cm}
+			\begin{itemize}
+				\item la configurazione XML di Spring non deve essere usata.
+			\end{itemize}
+			\vspace{0.2cm}
+		\end{minipage}
+	\hline
+		Spring Batch
+		&
+		\begin{minipage}[c]{0.7\textwidth}
+			\vspace{0.2cm}
+			\begin{itemize}
+				\item i componenti di un Job non devono essere dichiarati come Bean.
+			\end{itemize}
+			\vspace{0.2cm}
+		\end{minipage}
+	\hline
+		Spring Data
+		&
+		\begin{minipage}[c]{0.7\textwidth}
+			\vspace{0.2cm}
+			\begin{itemize}
+				\item index e type nelle annotazioni dei Model devono provenire da Bean.
+			\end{itemize}
+			\vspace{0.2cm}
+		\end{minipage}
+	\hline
+		JUnit
+		&
+		\begin{minipage}[c]{0.7\textwidth}
+			\vspace{0.2cm}
+			\begin{itemize}
+				\item le linee di codice devono avere una test coverage superiore all'80\%.
+			\end{itemize}
+			\vspace{0.2cm}
+		\end{minipage}
+	\hline
+	\caption[Lista di controllo per il software]{Lista di controllo per il software}
+	\end{longtable}

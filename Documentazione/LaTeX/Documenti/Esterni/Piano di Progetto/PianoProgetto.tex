@@ -1,0 +1,56 @@
+\input{../../../LatexLayout/global.tex}
+\input{./res/local.tex}
+
+\title{\PianoProgetto}
+\author{\GroupName}
+
+\date{17 Dicembre 2017}
+
+\begin{document}
+
+	\frenchspacing
+
+	\makeFrontPage
+	
+	\input{./res/changelog.tex}
+	\newpage
+	
+	\tableofcontents
+	\newpage
+	
+	\renewcommand{\listtablename}{Tabelle}
+	\listoftables
+	\newpage
+	
+	\renewcommand{\listfigurename}{Immagini}
+	\listoffigures
+	\newpage
+	
+	\input{./sections/introduzione.tex}
+	\input{./sections/scadenza.tex}
+	\newpage
+	
+	\input{./sections/analisi-rischi.tex}
+	\newpage
+  
+	\input{./sections/modelloSviluppo.tex}
+	\newpage
+	
+	\input{./sections/pianificazione.tex}
+	\newpage
+	
+	\input{./sections/preventivo.tex}
+	\newpage
+	
+	\appendix
+	
+	\input{./sections/attualizzazioneRischi.tex}
+	\newpage	
+	
+	\input{./sections/organigramma.tex}
+	\newpage
+	
+	
+	
+
+\end{document}

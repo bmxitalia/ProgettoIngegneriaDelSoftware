@@ -1,0 +1,63 @@
+\subsection[Implementare una nuova strategia]{Implementare una nuova strategia per il calcolo delle baseline}
+\label{newstrategy}
+	\subsubsection{Realizzazione della strategia}
+	
+		Una strategia è una classe che implementa l'interfaccia \lstinline{it.iks.openapm.strategies.Strategy}.
+		È disponibile una classe astratta \lstinline{AbstractStrategy} che implementa il costruttore aspettato e 
+		salva la variabile \lstinline[language=Java]{protected final int dataPoints}.
+		I metodi necessari alla classe della nuova strategia sono:
+		
+		\begin{itemize}
+	
+			\item \lstinline[language=Java]{List<Date> periods(Date calculationTime)}:
+				Data una data per il calcolo della baseline, determinare una lista di periodi 
+				da cui prelevare le metriche, indicate dalla data di inizio.
+				La data passata come parametro \textbf{\underline{\large deve}} essere l'ultima della lista.
+				Il numero di periodi è governato dalla variabile \lstinline{dataPoints}.
+				Per esempio, in una strategia mensile con \lstinline{dataPoints = 4}, per calcolare i periodi 
+				per \lstinline{15:00 - 2 Giugno}, verranno restituite le seguenti date:
+				\begin{itemize}
+					\item \lstinline{15:00 - 2 Marzo};
+					\item \lstinline{15:00 - 2 Aprile};
+					\item \lstinline{15:00 - 2 Maggio};
+					\item \lstinline{15:00 - 2 Giugno};			
+				\end{itemize}
+			
+			\item \lstinline[language=Java]{Map<String, Object> attributes(Date calculationTime)}
+				Data una data per il calcolo della baseline, restituisce un insieme di attributi 
+				che verranno aggiunti alla baseline finale. 
+				Questi attributi devono essere sufficienti per riconoscere la baseline in base alla strategia.
+				Per esempio, in una strategia mensile, per calcolare gli attributi per \lstinline{15:00 - 2 Giugno}, 
+				verranno restituiti:
+				\begin{itemize}
+					\item Il tipo di strategia (mensile);
+					\item L'orario di calcolo (15:00);
+					\item Il giorno del mese (2);
+				\end{itemize}
+				
+			\item \lstinline[language=Java]{Date previousPeriod(Date calculationTime)}
+				Data la data di una metrica, restituire la precedente baseline da utilizzare per il confronto.
+				Per esempio, in una strategia mensile, per la metrica del `15:14 - 2 Giugno`, 
+				verrà restituita la data \lstinline{15:00 - 2 Maggio}. 
+
+		\end{itemize}
+	\subsubsection{Registrare la strategia}
+
+		Per collegare un identificatore alla classe corretta è necessario aggiungere un valore 
+		\lstinline[language=Java]{<String, Class<? extends Strategy>>} al campo \lstinline{strategiesTable} 
+		di 	\lstinline{it.iks.openapm.strategy.StrategyFactory}. 
+		Per farlo è sufficiente aggiungere una riga nell'inizializzazione statica della variabile 
+		(poche righe dopo la sua dichiarazione).
+
+		Per esempio, per collegare l'identificatore \lstinline{daily} alla strategia \lstinline{DailyStrategy} è
+		sufficiente aggiungere questa linea di codice:
+		\begin{lstlisting}[language=Java]
+	// StrategyFactory L34
+	tempStrategiesTable.put("daily", DailyStrategy.class);
+		\end{lstlisting}
+		
+		
+		La modifica della classe \verb=StrategyFactory= alla registrazione di ogni nuova strategia risulta un punto critico in 
+		questa classe, la soluzione a questo problema è l'implementazione di meccanismi di Reflection che permetterebbero
+		di modificare dinamicamente la classe \verb=StrategyFactory=.\\
+		Al momento \GroupName{} non ha ancora implementato questa soluzione.

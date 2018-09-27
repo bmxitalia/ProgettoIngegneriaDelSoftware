@@ -1,0 +1,41 @@
+\section{Istruzioni per l'utilizzo} \label{infoUtili}
+
+	\subsection{Requisiti software} \label{reqsoftware}
+
+		Di seguito vengono riportare le versioni minime garantite per il funzionamento del prodotto \ProjectName{}:
+
+		\begin{itemize}
+			\item \textbf{Sistema operativo:} Ubuntu 16.04. Il prodotto è supportato anche da altre distribuzioni Linux;
+			\item \textbf{Java:} Versione 8 o superiore;
+			\item \textbf{Elasticsearch:} Versione 6 o superiore.
+		\end{itemize}
+
+		Il prodotto mette a disposizione anche la possibilità di inviare delle email, allo scatenarsi di eventi; per tanto nel caso di utilizzo di questa
+		funzionalità, è necessario configurare:
+
+		\begin{itemize}
+			\item Java Mail Sender;
+			\item Spring Mail.
+		\end{itemize}
+
+	\subsection{Requisiti hardware}
+
+		Non sono stati individuati requisiti hardware minimi per il funzionamento del prodotto \ProjectName{}.
+
+	\subsection{Prerequisiti}
+
+		Si assume che l'utilizzatore del prodotto \ProjectName{} possegga delle conoscenze basilari nel campo della programmazione ad
+oggetti e del linguaggio Java. Un altro prerequisito importante è la familiarità con Elasticsearch e sopratutto con l'inserimento e la modifica di documenti.
+Una guida sull'argomento può essere trovata al seguente link: \\
+\url{https://www.elastic.co/guide/en/elasticsearch/guide/current/data-in-data-out.html}
+
+	\subsection{Installazione e avvio} \label{instal}
+
+		Per utilizzare il prodotto \ProjectName{} sarà sufficiente eseguire queste poche operazioni:
+		\begin{itemize}
+			\item Scaricare il codice sorgente;
+			\item Configurare il file `\textit{application.properties}';
+			\item Eseguire il comando `\textit{./gradlew bootJar}' per ottenere un .jar file eseguibile;
+			\item Copiare il .jar ottenuto (\textit{build/libs/openapm-\{VERSIONE\}.jar}) dove desiderato;
+			\item Avviare il file lanciando `\textit{java -jar openapm-\{VERSIONE\}.jar}.
+		\end{itemize}

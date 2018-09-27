@@ -1,0 +1,27 @@
+% PACKAGE USATI
+\usepackage{fancyhdr}
+
+% IMPOSTAZIONE HEADER E LAYOUT
+\fancypagestyle{plain}{
+    \fancyhdr{}
+    \lhead{\includegraphics[scale=0.09,keepaspectratio=true]{../../../LatexLayout/logo.png}}
+    \rhead{\GroupName{} \\ \GroupEmail{}}
+    \cfoot{}
+    \renewcommand{\headrulewidth}{0.3pt}
+}
+\setlength{\headheight}{30pt}
+\pagestyle{plain}
+
+\makeatletter
+\let\ps@empty\ps@plain
+\let\ps@firstpage\ps@plain
+\makeatother
+
+\setlength{\headsep}{0in}
+\longindentation=0pt
+
+% COSTANTI UTILI
+\newcommand{\Dipartimento}{ Dipartimento di Matematica ``Tullio Levi-Civita'' }
+\newcommand{\ViaDipartimento}{ Via Trieste, 63 - 35121 Padova (PD) }
+\newcommand{\Unipd}{ Univertità degli studi di Padova }
+

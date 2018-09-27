@@ -1,0 +1,138 @@
+\subsection{Verifica} \label{verifica}
+
+	\subsubsection{Scopo del processo}
+
+		Il processo di verifica è un processo che determina se i prodotti software di
+		un'attività soddisfano i requisiti o le condizioni imposte ad essi nelle attività 
+		precedentemente svolte.	
+		Per costi ed efficacia delle prestazioni, la verifica dovrebbe essere integrata, 
+		quanto prima possibile, nel processo che la impiega.
+			
+	\subsubsection{Analisi}	
+
+		\myparagraph{Analisi statica}
+
+            \'E una tecnica che studia il codice e la documentazione e ne verifica la conformità alle regole,
+            l'assenza di difetti e la presenza di proprietà positive.
+            Questa tecnica non richiede esecuzione del prodotto software in alcuna sua parte per cui è essenziale
+            finché il sistema non è completamente disponibile.
+		    \'E attuabile tramite due tecniche:
+
+                \begin{itemize}
+
+                    \item \textbf{Walkthrough}:
+                        attività che richiede la collaborazione di più persone per effettuare una lettura a largo
+                        spettro di tutto il documento e il codice in esame, con lo scopo di rivelare la presenza
+                        di difetti.
+                        Ogni difetto riscontrato verrà discusso tra Verificatore e autore; è importante che ci
+                        sia una terza figura che mantenga il controllo della discussione, detta arbitro.
+                        Per ogni documento deve essere redatta una lista di controllo con i difetti rilevati e le
+                        decisioni prese.
+                        Le fasi del walkthrough sono le seguenti:
+
+                            \begin{itemize}
+                                \item pianificazione;
+                                \item lettura;
+                                \item discussione;
+                                \item correzione dei difetti.
+                            \end{itemize}
+
+                        Ognuna delle precedenti fasi elencate deve essere documentata;
+
+                    \item \textbf{Inspection}:
+                        attività normalmente svolta da una sola persona che effettua una lettura mirata e
+                        strutturata del documento, volta a localizzare gli errori segnalati nella lista
+                        di controllo; tramite controlli ripetuti verrà progressivamente
+                        ampliata per rendere più efficace l'attività di inspection.
+                        Le fasi di inspection sono:
+
+                            \begin{itemize}
+                                \item pianificazione;
+                                \item definizione della lista di controllo;
+                                \item lettura;
+                                \item correzione dei difetti.
+                            \end{itemize}
+
+                        Ognuna delle precedenti fasi elencate deve essere documentata.
+
+                \end{itemize}
+
+            Essendo walkthrough una tecnica poco efficiente verrà impiegata principalmente nella prima parte del progetto.
+            Nelle fasi successive si utilizzerà la lista di controllo prodotta da walkthrough e dalle segnalazioni
+            dei committenti per effettuare inspection.
+
+        \myparagraph{Analisi dinamica}
+
+            \'E una tecnica di analisi del prodotto software che richiede l'esecuzione del programma.
+            Vengono	effettuati dei test su parti del sistema per verificare che ognuna di esse produca
+            il risultato desiderato. \\
+            Prima di eseguire un qualsiasi test è necessario conoscere la precondizione e postcondizione
+            del codice analizzato per poterne decretare l'esito finale.
+            Ci sono diversi tipi di test:
+
+                \begin{itemize}
+                    \item \textbf{Test di Unità}:
+                        va ad isolare la parte più piccola di software testabile nell'applicazione,
+                        chiamata unità, per stabilire se essa funziona esattamente come previsto.
+                        Per effettuare test di unità è necessaria la scrittura di codice fittizio.
+                        Può essere di due tipologie:
+
+                            \begin{itemize}
+                                \item \textbf{Driver}: è un software che guida il test d'unità sostituendo
+                                l'unità chiamante per testare l'unità chiamata;
+                                \item \textbf{Stub}: è un software che simula il comportamento delle unità
+                                chiamate per testare un'unità chiamante.
+                            \end{itemize}
+
+                        Ogni unità deve essere sottoposta a test prima di poter essere integrata con
+                        quelle già testate. Inoltre, ogni test di unità dovrà avere un codice identificativo
+                        che segue la seguente nomenclatura:
+                        \[TU = [\mbox{Numero progressivo}]\]
+                        
+                    \item \textbf{Test di Integrazione}:
+                        prevede la combinazione di unità già testate in un unico componente per verificare
+                        che il loro funzionamento integrato abbia esito atteso.
+                        Richiede una strategia di integrazione incrementale che può essere di due tipologie:
+
+                            \begin{itemize}
+                                \item \textbf{Bottom-up}: si sviluppano e si integrano prima le unità con minore
+                                dipendenza funzionale e maggiore utilità e poi si risale l'albero delle
+                                dipendenze;
+                                \item \textbf{Top-down}: si sviluppano prima le unità più esterne poste sulle
+                                foglie dell'albero delle dipendenze e poi si scende l'albero.
+                            \end{itemize}\\
+						Ogni test di integrazione prevede un codice che lo identifica così formato:
+						\[TI = [\mbox{Numero progressivo}]\]
+                    \item \textbf{Test di Regressione}:
+                        questo test deve essere eseguito ad ogni modifica ad un implementazione del sistema.
+                        Vengono ripetuti sul codice modificato i test precedentemente utilizzati, per
+                        verificare che le modifiche effettuate non abbiano alterato elementi precedentemente
+                        funzionanti.
+                        I contenuti di tale test devono essere decisi nel momento in cui si approvano modifiche
+                        al software.
+                        Ogni test di regressione prevede un codice che lo identifica così formato:
+						\[TR = [\mbox{Numero progressivo}]\]
+                    \item \textbf{Test di Sistema}:
+                        ha inizio con il completamento del test d'integrazione e verifica il comportamento
+                        dinamico del sistema completo rispetto ai requisiti software.
+                        Ogni test di sistema dovrà avere un requisito correlato da testare e dovrà rispettare 
+                        la seguente nomenclatura:
+                        \[TS = [\mbox{Tipologia}][\mbox{Importanza}][\mbox{Codice}]\]
+                                               
+                        Dove Tipologia e Importanza sono dedotti dal requisito correlato che il test andrà a verificare, 
+                        mentre Codice è un codice composto da una serie di numeri separati tramite
+                   		punto che identificano il test in maniera univoca e lo esprimono gerarchicamente;
+                    \item \textbf{Test di Accettazione}:
+                        prevede il collaudo del prodotto in presenza della \glossaryItem{Proponente}.
+                        Il superamento del test permette il rilascio ufficiale del prodotto sviluppato.
+                        
+                \end{itemize}
+		
+	\subsubsection{Strumentazione}
+
+		\begin{itemize}
+			\item \textbf{Hunspell}:
+				Hunspell è un correttore ortografico integrabile con TexMaker e che supporta dizionari italiani;
+			\item \textbf{Julia}:
+				Julia è un analizzatore statico per Java basato sulla tecnica scientifica dell'interpretazione astratta che garantisce la precisione e l'affidabilità dei suoi risultati.
+		\end{itemize}

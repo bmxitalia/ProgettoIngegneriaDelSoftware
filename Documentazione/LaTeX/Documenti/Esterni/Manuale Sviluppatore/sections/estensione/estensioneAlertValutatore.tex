@@ -1,0 +1,37 @@
+\subsection{Implementare un nuovo valutatore per gli alert}
+\label{newvalutatore}
+	\subsubsection{Realizzare un nuovo valutatore per gli alert}
+	
+		Un valutatore è una classe che implementa l'interfaccia \lstinline{it.iks.openapm.alerts.evaluators.}\\
+		\lstinline{Evaluator}.
+		È disponibile una classe astratta \lstinline{EvaluatorFactory} che implementa il costruttore aspettato.
+		I metodi necessari alla classe del nuovo valutatore per gli alert sono:
+			
+		\begin{itemize}
+		
+			\item \lstinline[language=Java]{boolean evaluate(List<Condition> conditions)}:
+				data una lista di condizioni, ritorna \lstinline{true} se soddisfa il valutatore.
+				Ad esempio, avendo un valutatore del tipo ``match su tutte le condizioni'',
+				la variabile ritornata sarà \lstinline{true} se esiste un match su tutte le condizioni,
+				\lstinline{false} altrimenti. 
+		\end{itemize}
+	
+	\subsubsection{Registrare un nuovo valutatore per gli alert}
+	
+		Per collegare un identificatore alla classe corretta è necessario aggiungere un valore 
+		\lstinline[language=Java]{<String, Class<? extends Evaluator>>} al campo \lstinline{evaluatorsTable} 
+		di \lstinline{it.iks.openapm.alerts.factories.}\\ \lstinline{EvaluatorFactory}. 
+		Per farlo è sufficiente aggiungere una riga nell'inizializzazione statica della variabile 
+		(poche righe dopo la sua dichiarazione).
+
+		Per esempio, per collegare l'identificatore \lstinline{all_match} al valutatore \lstinline{AllMatchEvaluator} è
+		sufficiente aggiungere questa linea di codice:
+		\begin{lstlisting}[language=Java]
+	// EvaluatorFactory L31
+	tempEvaluatorsTable.put("all_match", AllMatchEvaluator.class);
+		\end{lstlisting}\\
+		
+		La modifica della classe \verb=EvaluatorFactory= alla registrazione di ogni nuovo valutatore risulta un punto critico in 
+		questa classe, la soluzione a questo problema è l'implementazione di meccanismi di Reflection che permetterebbero
+		di modificare dinamicamente la classe \verb=EvaluatorFactory=.\\
+		Al momento \GroupName{} non ha ancora implementato questa soluzione.

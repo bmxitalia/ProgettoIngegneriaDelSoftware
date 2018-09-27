@@ -1,0 +1,39 @@
+\newcommand{\DocTitle}{\PianoQualifica}
+
+\newcommand{\DocVersion}{\VersionePQ}
+
+\newcommand{\DocRedazione}{\Isacco \\ \Luca}
+\newcommand{\DocVerifica}{\Leonardo}
+\newcommand{\DocApprovazione}{\Isacco}
+
+\newcommand{\DocUso}{Esterno}
+\newcommand{\DocDistribuzione}{
+	\Proponente{} \\
+	\Committente{} \\
+	Gruppo \GroupName{}
+}
+
+\newcommand{\DocDescription}{
+	Questo documento si prefigge di regolamentare le operazioni di verifica del gruppo \GroupName{} necessarie ad
+	assicurare i requisiti qualitativi per il \glossaryItem{progetto} \ProjectName{}.
+}
+
+%used for checklist
+\usepackage{amssymb}
+\usepackage{pifont}
+
+\newcommand{\done}[]{{\color{green}\ding{51}}}
+\newcommand{\donetext}[]{{\color{Green}Implementato}}
+\newcommand{\notdone}[]{{\color{red}\ding{55}}}
+\newcommand{\notdonetext}[]{{\color{red}Non implementato}}
+
+\newcommand{\TestLegend}[]{
+	\begin{center}
+    	\begin{tabular}{l l l}
+    		{\large \textbf{Legenda}} &
+      		\done{}: Superato &
+      		\notdone{}: Non superato \\ \hline
+    	\end{tabular}	
+	\end{center}
+}
+

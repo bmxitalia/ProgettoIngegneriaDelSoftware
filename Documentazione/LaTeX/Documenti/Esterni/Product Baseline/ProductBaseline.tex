@@ -1,0 +1,42 @@
+\input{../../../LatexLayout/global.tex}
+\input{./res/local.tex}
+
+\title{\ProductBaseline}
+\author{\GroupName}
+
+\date{8 Maggio 2018}
+\usepackage{graphicx}
+
+\begin{document}
+
+    \frenchspacing
+    
+    \makeFrontPage
+
+    \input{./res/changelog.tex}
+    \newpage
+
+    \tableofcontents
+    \newpage
+	
+	\renewcommand\listfigurename{Immagini}
+    \listoffigures
+    \newpage
+
+    \input{./sections/Introduzione.tex}
+    \newpage
+
+    \input{./sections/ArchitetturaGenerale.tex}
+    \newpage
+
+    \input{./sections/DiagrammiClasse.tex}
+    \newpage
+    
+    \input{./sections/AltriPattern.tex}
+    \newpage
+
+    \input{./sections/DiagrammiSequenza.tex}
+    \newpage
+
+
+\end{document}

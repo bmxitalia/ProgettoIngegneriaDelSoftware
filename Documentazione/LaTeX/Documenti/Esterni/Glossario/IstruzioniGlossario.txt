@@ -1,0 +1,6 @@
+Per inserire i riferimenti della vostra parte di glossario aggiungeteli in ordine alfabetico nella introduzione secondo
+la sintassi presente.
+Per inserire una voce nel diario delle modifiche guardate res/changelog.tex.
+Per inserire un nuovo termine usate la sintassi di uno dei file in sections. Se il file corrispondente alla lettera del
+termine è già presente in /sections allora aggiungetelo in ordine alfabetico nella pagina, altrimenti create un nuovo
+file .tex con il nome la lettera iniziale del termine e aggiungetelo a /sections.

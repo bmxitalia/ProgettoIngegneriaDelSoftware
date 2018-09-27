@@ -1,0 +1,109 @@
+    \subsection{Operatori}
+
+	Il prodotto \ProjectName{} utilizza un interfaccia \textit{Operator} implementata da una classe astratta \textit{AbstractOperator}.
+	Gli operatori estendono quindi la classe astratta di cui sopra e lavorano su oggetti, così da definire ad esempio, se all'interno di una metrica è 		presente il campo `value'. Gli operatori implementati sono:
+	\begin{itemize}
+                \item \textbf{AttributeOperator:} recupera un attributo di un elemento;
+		\item \textbf{AverageOperator:} calcola la media di gruppi di elementi;
+		\item \textbf{EqualsOperator:} controlla se i valori di due elementi sono uguali;
+		\item \textbf{GreaterOperator:} controlla se i valori di un primo elemento sono maggiori di quelli del secondo;
+		\item \textbf{LessOperator:} controlla se i valori di un secondo elemento sono maggiori di quelli del primo;
+		\item \textbf{NullOperator:} non raggruppa, ne calcola;
+		\item \textbf{SumOperator:} calcola la somma di gruppi di elementi;
+	\end{itemize}
+
+	\subsubsection{Templator di operandi}
+
+		Gli operatori eseguono controlli e operazioni su elementi e per agevolarne il compito, è stato introdotta la classe \textit{OperandTemplator} che:
+		\begin{itemize}
+		        \item Dato in input un oggetto ed un identificatore;
+			\item Controlla che il secondo sia effettivamente un identificatore, quindi se e finisce con un apostrofo (Es. `valore');
+			\item Elimina gli apostrofi;
+			\item Ritorna una stringa contenente il valore richiesto, se presente nell'oggetto;
+		\end{itemize}
+
+		Prendendo quindi la configurazione di una metrica:
+		\begin{lstlisting}[style=json]
+
+		{
+			"name": "http-duration-by-url",
+			/* ... */
+			"filters": [
+				{
+					"operator": "=",
+					"operands": [
+						"type",
+						"'http'"
+					]
+				}
+			],
+			"aggregation": { /* ... */ },
+			"calculation": { /* ... */ }
+		}
+		\end{lstlisting}
+
+		Possiamo notare come \textit{"type"} sia statico a differanza di \textit{"'http'"}, che invece è dinamico.
+
+    \subsection{Strategie}
+
+	Nel processare delle baseline, vengono messe a disposizione tre diverse strategie di calcolo:
+	\begin{itemize}
+                \item \textbf{Daily:} la quale, data un ora di interesse, recupera elementi di n giorni prima, con n configurabile;
+		\item \textbf{Weekly:} la quale, data un ora ed un giorno di interesse, recupera elementi di n settimane prima (Es. dato Lunedì alle 15, recupererà n baseline dei Lunedì delle settimane precedenti);
+		\item \textbf{Monthly:} la quale, data un ora ed un giorno di interesse, recupera elementi di n mesi prima (Es. dato il 12 Aprile alle 15, recupererà n baseline di ogni giorno 12 dei mesi precedenti).
+	\end{itemize}
+
+	Il numero di elementi da recuperare durante il calcolo è configurabile dall'utente, tramite la modifica di \textit{application.properties}. Di default il valore è settato a 4.
+
+    \subsection{Valutatori}
+
+	Per permettere di controllare un alert, si è deciso di implementare valutatori che, controllando un set di condizioni, determinano lo stato dell'alert stesso.
+	I valutatori esistenti mettono a disposizione il metodo \textit{boolean evaluate(List\textless{}Condition\textgreater{})} e sono:
+	\begin{itemize}
+                \item \textbf{AllMatchEvaluator:} dato un set di istruzioni non nullo, ritorna vero solo se tutte le condizioni sono soddisfatte;
+		\item \textbf{AnyMatchEvaluator:} dato un set di istruzioni non nullo, ritorna vero solo se almeno una condizioni è soddisfatta.
+	\end{itemize}
+
+    \subsection{Verificatori}
+
+	Una volta determinato lo stato di un alert (Attivo o Inattivo), le decisioni sulle tempistiche di lancio delle azioni di rimedio spettano ai verificatori i quali, in base alla strategia, decideranno se e quando lanciare le azioni di rimedio. I verificatori implementati sono:
+	\begin{itemize}
+                \item \textbf{AfterVerifier:} strategia per la quale, il lancio di azioni, avviene all'ennesimo cambio di stato in Attivo di un alert;
+		\item \textbf{ImmediateVerifier:} strategia per la quale, il lancio di azioni, avviene non appena un alert cambia stato in Attivo;
+		\item \textbf{TerminationVerifier:} strategia per la quale, il lancio di azioni, avviene non appena un alert cambia stato in Inattivo.
+	\end{itemize}
+
+    \subsection{Templator di indice}
+
+		Per facilitare la navigazione tra gli indici, è stato creata la classe \textit{IndexTemplator}. Esso il suo funzionamento:
+		\begin{itemize}
+		        \item Accetta in input una stringa oppure una stringa ed una data;
+			\item Controlla se tale stringa è un template, quindi se inizia con `\#';
+			\item Elimina il `\#' dalla stringa;
+			\item Ritorna un oggetto \textit{SimpleDateFormat} dato il pattern nella stringa e l'orario corrente;
+		\end{itemize}
+
+		Vediamo un esempio prendendo la configurazione di una metrica:
+		\begin{lstlisting}[style=json]
+
+		{
+			"name": "http-duration-by-url",
+			"cron": "0 * * * * *",
+			"duration": 60,
+			"traces_index": "stagemonitor-spans-*",
+			"metrics_index": "#'openapm-metrics-'yyyy.MM.dd",
+			"filters": [ /* ... */ ],
+			"aggregation": { /* ... */ },
+			"calculation": { /* ... */ }
+		}
+		\end{lstlisting}
+
+		In questo caso \textit{metrics\_index} è un template valido e quindi:
+		\begin{itemize}
+		        \item Ponendo che sia il 7 Maggio 2018 alle ore 17:00;
+			\item IndexTemplator controlla che metrics\_index sia template;
+			\item Elimina il `\#' dalla stringa;
+			\item Ritorna un oggetto \textit{SimpleDateFormat} con pattern \textit{yyyy.MM.dd};
+			\item La metrica viene salvata nell'indice \textit{openapm-metrics-2018.05.07}.
+		\end{itemize}
+

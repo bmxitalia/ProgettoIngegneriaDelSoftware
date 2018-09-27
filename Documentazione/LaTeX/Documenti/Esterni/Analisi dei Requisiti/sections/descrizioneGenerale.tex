@@ -1,0 +1,65 @@
+\section{Descrizione generale} \label{descrizione generale}
+
+    \subsection{Obiettivi del prodotto}
+
+        Il progetto ha come obiettivo la creazione di un applicativo che interpreti periodicamente dati raccolti da un
+        \glossaryItem{Agent}. L'applicativo dovrà essere in grado di:
+        \begin{itemize}
+            \item recuperare i dati periodicamente da \glossaryItem{ElasticSearch};
+        	\item generare metriche dai dati;
+        	\item generare baseline basate sulle metriche del punto precedente;
+        	\item inviare notifiche allo scatenarsi di critical event.
+		\end{itemize}
+
+    \subsection{Funzioni del prodotto}
+
+        L'applicativo fornirà le seguenti funzioni:
+
+        \begin{itemize}
+
+            \item creazione ed avvio periodico di una procedura automatica che autonomamente accederà al resto delle
+            funzionalità offerte dall'applicativo;
+            \item raccolta di traces da un indice di ElasticSearch a intervalli regolari, ad esempio un minuto, ed
+            elaborazione di tali dati per creare delle metriche utili alle altre funzionalità;
+            \item calcolo automatico di baseline su ogni metrica calcolata e utilizzo delle stesse per determinare, ad ogni
+            intervallo di raccolta traces, se sono state superate soglie configurabili;
+            \item notifica del superamento di determinate soglie all'utente utilizzatore dell'applicativo, tramite
+            invio di messaggi di posta elettronica;
+            \item esecuzione di procedure automatiche al superamento di determinate soglie configurabili;
+            \item inserimento di informazioni utili in un indice dedicato, al verificarsi di un critical event.
+
+        \end{itemize}
+        
+   	\subsection{Funzionalità necessarie da non implementare} \label{funzioni non richieste}
+   	
+   		Nello sviluppo di un applicativo di questo tipo è necessario un \textbf{meccanismo di autenticazione} e
+   		un'\textbf{interfaccia grafica} per l'utilizzo. Il gruppo non si occuperà dello sviluppo di queste
+   		componenti perché la \glossaryItem{Proponente} possiede già delle soluzioni che
+   		ritiene valide.
+
+    \subsection{Ambiente di esecuzione}
+
+    	La Proponente \Proponente{} fornisce al gruppo \GroupName{} il seguente ambiente di esecuzione:
+
+    		\begin{itemize}
+    			\item un server contenente un applicativo da monitorare che genera traces;
+    			\item un server dove sono installati ElasticSearch e \glossaryItem{Kibana}, dove devono essere raccolte e visualizzate le traces. In 							questo server deve essere installata l'applicazione da realizzare.
+    		\end{itemize}
+
+    \subsection{Vincoli} \label{vincoli}
+
+        Per il corretto funzionamento dell'applicativo è necessario che nel server ElasticSearch, con cui comunica
+        il sistema, siano presenti le seguenti configurazioni:
+
+            \begin{itemize}
+                \item schedulazione della procedura batch;
+                \item parametri di filtraggio delle traces per calcolo metriche e aggiornamento baseline;
+                \item parametri di raggruppamento delle traces per calcolo metriche e aggiornamento baseline;
+                \item \glossaryItem{policy} utilizzata per il controllo di critical event;
+                \item template della mail da utilizzare per l'invio di mail allo scatenarsi di critical event;
+                \item configurazione per l'invio delle mail allo scatenarsi di critical event;
+                \item indicazioni sulla procedura automatica da eseguire allo scatenarsi di critical event che
+                la richiedano.
+            \end{itemize}
+
+        L'applicazione può essere eseguita nel sistema operativo Debian con installato Java 8.0.

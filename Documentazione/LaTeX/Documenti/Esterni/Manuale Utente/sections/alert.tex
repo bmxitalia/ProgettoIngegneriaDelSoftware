@@ -1,0 +1,150 @@
+\subsection{Alters}
+
+	\subsubsection{Configurazione di un alert}
+
+	
+	Di seguito viene riportata un configurazione di esempio per un alert, con la successiva spiegazione dei vari campi che l'utente può configurare:
+
+	\begin{lstlisting}[style=json]
+
+		{
+			"name": "http-duration-warning",
+			"evaluate_when": "all_match",
+			"conditions": [ /* ... */ ],
+			"verification": {
+				"on": "immediately"
+			},
+			"actions": [
+				"VK1d4GIBNvwm-_-b4nKr",
+				"wa1g4GIBNvwm-_-bK34k",
+				"wq1g4GIBNvwm-_-bL35Z"
+			]
+		}
+	\end{lstlisting}
+
+	La configurazione di cui sopra va inserita nell'indice di configurazione alter che di default è: \textit{openapm-config-alerts} \\
+	I campi configurabili sono quindi:
+
+	\begin{itemize}
+                \item \textbf{name:} specifica il nome dell'alert, a puro scopo informativo;
+                \item \textbf{evaluate\_when:} specifica un identificatore che indica la strategia da utilizzare per determinare lo stato globale dell'alert a partire dallo stato delle singole condizioni;
+                \item \textbf{conditions:} specifica una lista di singole condizioni che verificano questo alert;
+                \item \textbf{verification:} specifica un identificatore per la strategia da utilzzare;
+                \item \textbf{actions:} specifica un elenco di ID corrispondenti a delle azioni di rimedio.
+	\end{itemize}
+
+	\newpage
+
+	\myparagraph{Il campo `conditions'}
+
+	Espandiamo ora la clausola `conditions' per illustrarne composizione e campi configurabili:
+
+	\begin{lstlisting}[style=json]
+
+		{
+			"metrics": [
+				[
+					{
+					"operator": "=",
+					"operands": [
+						"name",
+						"'http-duration-by-instance'"
+						]
+					},
+					{
+					"operator": "=",
+					"operands": [
+						"group",
+						"'/'"
+						]
+					}
+				],
+				[
+					{
+						"operator": "=",
+						"operands": [
+							"name",
+							"'http-duration-by-instance'"
+							]
+					},
+					{
+						"operator": "=",
+						"operands": [
+							"group",
+							"'/vets.html'"
+							]
+					}
+				]
+			],
+			"baseline": { /* ... */ },
+			"calculation": {
+				"operator": "+",
+				"operands": [
+					"value"
+					]
+			},
+			"evaluation": {
+				"operator": ">",
+				"operands": [
+					"value",
+					"baseline_value"
+					]
+			}
+		}
+	\end{lstlisting}
+
+	I campi configurabili sono quindi:
+
+	\begin{itemize}
+                \item \textbf{metrics:} specifica un elenco di metriche da considerare per calcolare lo stato della condizione. Qui ogni metrica è rappresentata da un elenco di filtri, in AND logico tra loro, per determinare quali sono valide. \\
+					(Es. nel caso di cui sopra si considerano due metriche, entrambe con nome `http-duration-by-instance', appartenenti però a due gruppu diversi, rispettivamente `/' e `/vets.html');
+                \item \textbf{baseline (opzionale):} specifica una baseline da utilizzare per il calcolo della condizione;
+                \item \textbf{calculation:} specifica un operatore che, dato delle metriche, ricavi un valore numerico da utilizzare per il confronto;
+                \item \textbf{evaluation:} specifica un operatore che, preso il valore numerico calcolato in precedenza (`value') e opzionalmente un valore della baseline (`baseline\_value'), determini se la condizione è vera o falsa.
+	\end{itemize}
+
+	\newpage
+
+	\mysubparagraph{Il campo `baselines'}
+
+	Espandiamo ora la clausola opzionale `baselines' per illustrarne composizione e campi configurabili:
+
+	\begin{lstlisting}[style=json]
+
+		{
+			"index": "openapm-baselines",
+			"filters": [
+				{
+					"operator": "=",
+					"operands": [
+						"name",
+						"'http-duration-by-url'"
+						]
+				},
+				{
+					"operator": "=",
+					"operands": [
+						"group",
+						"'/'"
+						]
+				}
+			],
+			"strategy": "daily",
+			"calculation": {
+				"operator": "+",
+				"operands": [
+					"mean",
+					"deviation"
+					]
+			}
+		}
+	\end{lstlisting}
+
+	I campi configurabili sono quindi:
+
+	\begin{itemize}
+                \item \textbf{index:} specifica un indice da cui prelevare le baseline;
+                \item \textbf{filters:} specifica un elenco di filtri per determinare quali baseline ottenere;
+                \item \textbf{strategy:} specifica una strategia per indicare il periodo di interesse delle baseline;
+                \item \textbf{calculation:} specifica un operatore per determinare un valore numerico da una baseline precedentemente ottenuta.
+	\end{itemize}

@@ -1,0 +1,178 @@
+\subsection{Garanzia di qualità} \label{garanzia di qualita}
+
+    In questa sezione vengono definite le norme e la struttura delle metriche e degli obiettivi di qualità, descritti
+    nel \vPianoDiQualifica{}. Metriche ed obiettivi devono essere decise dagli Amministratori in collaborazione con i Verificatori.
+
+    \subsubsection{Notazione per la classificazione}
+
+        Sia gli obiettivi di qualità che le metriche devono essere classificati secondo la seguente notazione:
+
+            \begin{center}
+                \textbf{$\{$Classe$\}\{$Tipo$\}\{$Oggetto$\}^*\{$codice\_identificativo$\} : \{$Nome$\}$}
+            \end{center}
+
+            \begin{itemize}
+                \item \textbf{Classe:} indica se si tratta di un obiettivo di qualità o una metrica. Può essere:
+
+                    \begin{itemize}
+                        \item \textbf{O:} per un obiettivo;
+                        \item \textbf{M:} per una metrica.
+                    \end{itemize}
+
+                \item \textbf{Tipo:} stabilisce se riguarda un prodotto o un processo e può assumere i valori:
+
+                    \begin{itemize}
+                        \item \textbf{PD:} per gli obiettivi di prodotto;
+                        \item \textbf{PC:} per gli obiettivi di processo.
+                    \end{itemize}
+
+                \item \textbf{Oggetto:} nel caso di obiettivi o metriche di prodotto, indica se si riferisce alla parte
+                software oppure ad un documento. Può essere:
+
+                    \begin{itemize}
+                        \item \textbf{D:} per i documenti;
+                        \item \textbf{S:} per il software.
+                    \end{itemize}
+
+                \item \textbf{codice\_identificativo:} codice numerico incrementale necessario per l'identificazione;
+
+                \item \textbf{Nome:} titolo che descrive l'obiettivo o la metrica.
+            \end{itemize}
+	
+	\subsubsection{Obiettivi di qualità} \label{obiettivi_qualita}
+		In questa sezione vengono illustrati gli obiettivi che \GroupName{} intende 
+		raggiungere per assicurare la qualità di processo e di prodotto per quanto 
+		riguarda la realizzazione di \ProjectName{}. Inoltre, per  ognuno di questi obiettivi, 
+		vengono fissate metriche per rendere quantificabile il raggiungimento della qualità di 
+		processo e di prodotto; queste sono descritte nella §\ref{subsec:metriche}.
+
+		\myparagraph{Qualità di processo}
+		
+			Per realizzare un prodotto valido, \GroupName{} ha deciso di adottare lo standard 
+			ISO/IEC 15504 per valutare la qualità di ogni processo necessario allo sviluppo di 
+			\ProjectName{}. Viene inoltre utilizzato il ciclo di Deming per assicurare un 
+			miglioramento continuo dei processi, senza eventuali regressioni. Nell'appendice \ref{app:standard}
+			vengono approfonditi questo metodo e lo standard utilizzato.\\			
+			
+			Gli obiettivi fissati per i processi sono:
+				\begin{itemize}
+					\item rispettare tempi e costi descritti nel \vPianoDiProgetto{};
+					\item avere prestazioni sempre misurabili;
+					\item perseguire un miglioramento continuo delle stesse.
+				\end{itemize}
+
+		\myparagraph{Qualità di prodotto}
+		
+			Basandosi sullo standard ISO/IEC 9126, descritto nell'appendice \ref{app:standard}, 
+			sono stati fissati obiettivi che mirano a garantire la qualità del prodotto finale. Questi sono:
+				\begin{itemize}
+					\item i \textbf{documenti} devono:
+					\begin{itemize}
+						\item essere leggibili e comprensibili a chiunque;
+						\item essere corretti dal punto di vista ortografico, sintattico, semantico e logico.
+					\end{itemize}
+					\item il \textbf{software} deve:
+					\begin{itemize}
+						\item soddisfare tutti i requisiti obbligatori descritti in \vAnalisiDeiRequisiti{};
+						\item garantire usabilità e manutenibilità;
+						\item essere affidabile.	
+					\end{itemize}
+				\end{itemize}
+
+		\myparagraph{Tabella degli obiettivi}
+		
+			Viene qui riassunto ogni obiettivo, classificandolo con il suo codice identificativo e 
+			indicando le metriche che ne quantificano il raggiungimento. Per una 
+			descrizione delle metriche vedere nella sezione §\ref{subsec:metriche}. \\
+
+			\begin{center}
+			\begin{longtable}{ | >{\centering\arraybackslash}m{2cm} 
+							   | >{\centering\arraybackslash}m{5.5cm} 
+							   | >{\centering\arraybackslash}m{5.9cm} | }
+        
+        	\hline
+        		\textbf{ID} & \textbf{Nome} & \textbf{Metrica} \\ \hline
+        	\endhead
+			        
+				OPC1 & Coerenza con \PianoProgetto{} & 	MPC1:Schedule Variance\par
+			        									MPC2:Cost Variance
+			        									\\ \hline
+				OPC2 &  Miglioramento continuo & MPC3:SPICE\\ \hline
+				OPDD1 & Leggibilità documenti & MPDD1:Indice Gulpease\\ \hline
+				OPDS1 & Implementazione requisiti obbligatori & MPDS6:Requisiti obbligatori soddisfatti\\ \hline
+				OPDS2 & Manutenibilità e usabilità & 	MPDS1:Grado di accoppiamento\par
+			        									MPDS2:Code coverage\par
+			        									MPDS3:Rapporto linee di commento per linee di codice\par
+			        									MPDS4:Complessità ciclomatica
+			        									\\ \hline
+				OPDS3 & Affidabilità & MPDS5:Percentuale superamento test\\ \hline
+			\end{longtable}
+			\captionof{table}{Tabella degli obiettivi}
+			\end{center}\\
+
+			Ogni obiettivo si riterrà raggiungo solamente al raggiungimento del valore minimo
+			di ogni metrica che concorre alla quantificazione del suo grado di raggiungimento. 
+
+	\subsubsection{Metriche e misure}
+		\label{subsec:metriche}
+
+		Ogni processo ed ogni prodotto dovrebbero sempre presentare un set di \glossaryItem{KPI} 
+		che permettano il tracciamento, la comunicazione ed il miglioramento della loro qualità.\\
+		In questa sezione pertanto, si provvederà alla presentazione delle metriche che permettano
+		di quantificare e valutare la qualità dei processi e dei prodotti di \GroupName{}.
+		Le spiegazioni e le modalità di calcolo di ogni metrica sono definite nell'appendice \ref{metricheDettaglio}.\\
+		
+		Per valutare gli esiti ottenuti dall'utilizzo delle metriche, sono stati individuati tre
+		diversi range di risultati possibili che indicano ciascuno un diverso grado di raggiungimento 
+		dell'obiettivo di qualità. Questi sono:
+
+		\begin{itemize}
+			\item \textbf{Valore negativo:} il valore della misurazione in questo caso viene anche 
+			definito inaccettabile, in quanto non soddisfa la qualità minima desiderata;
+			\item \textbf{Valore minimo:} valori al di sopra di questa soglia possono essere accettati, 
+			ma saranno oggetto di ulteriore analisi in vista di un miglioramento desiderato;
+			\item \textbf{Valore ottimale:} rappresenta il valore indice di qualità, da mantenere nel tempo.
+		\end{itemize}\\
+		
+		Le soglie di accettazione per ogni metrica sono descritti nel \vPianoDiQualifica{}.\\		
+		
+
+		\myparagraph{Tabella delle metriche}
+		
+			Nella seguente tabella vengono indicati, oltre a Identificativo e Nome, anche 
+			l'obiettivo a cui si riferisce.\\
+
+			\begin{center}
+			\begin{longtable}{ | >{\centering\arraybackslash}m{2.5cm} 
+							   | >{\raggedright\arraybackslash}m{4cm} 
+							   | >{\raggedright\arraybackslash}m{5.7cm} 
+							   |  }
+        
+        	\hline
+        		\textbf{ID} & \textbf{Nome} & \textbf{Obiettivo} \\ \hline
+        	\endhead
+			        
+				MPC1 & Schedule Variance & OPC1:Coerenza con Piano di Progetto \\ \hline
+			        											
+			    MPC2 & Cost Variance & OPC1:Coerenza con Piano di Progetto \\ \hline
+			      															
+				MPC3 & SPICE & OPC2:Miglioramento continuo \\ \hline
+
+				MPDD1 & Indice Gulpease & OPDD1:Leggibilità documenti \\ \hline
+
+				MPDS1 & Grado di accoppiamento  & OPDS2:Manutenibilità e usabilità \\ \hline
+
+			    MPDS2 & Code coverage  & OPDS2:Manutenibilità e usabilità \\ \hline
+
+			    MPDS3 & Rapporto linee di commento per linee di codice  & OPDS2:Manutenibilità e usabilità \\ \hline
+
+			    MPDS4 & Complessità ciclomatica  &  OPDS2:Manutenibilità e usabilità \\ \hline
+
+				MPDS5 & Percentuale superamento test & OPDS3:Affidabilità \\ \hline
+
+				MPDS6 & Requisiti obbligatori soddisfatti & 
+						OPDS1:Im\-ple\-men\-ta\-zio\-ne requisiti obbligatori\\ \hline
+															
+			\end{longtable}
+			\captionof{table}{Tabella delle metriche}
+			\end{center}\\            

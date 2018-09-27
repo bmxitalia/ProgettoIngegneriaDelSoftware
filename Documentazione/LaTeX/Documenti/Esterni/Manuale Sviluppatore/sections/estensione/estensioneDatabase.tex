@@ -1,0 +1,63 @@
+	\subsection{Implementare un nuovo database}
+	\label{newdatabase}
+
+		Per l'implementazione di un nuovo database per la lettura e l'inserimento 
+		di trace/metriche/ecc sono richiesti due step: la realizzazione dell'implementazione
+		e l'inserimento del nuovo database all'elenco dei driver disponibili.
+
+		\subsubsection{Realizzazione dell'implementazione}
+
+			Per l'implementazione del nuovo database è necessario creare una classe che 
+			implementi l'interfaccia \lstinline{it.iks.openapm.databases.Database}.\\
+			I metodi richiesti nella classe sono i seguenti:
+			\begin{itemize}
+				\item \lstinline[columns=fixed, language=Java]{Iterable<Map<String, Object>> findAllInInterval(String index, Date from, Date to)}:\\
+					Dato un indice o tabella e un intervallo di tempo rappresentato da una 
+					data iniziale \lstinline{from} inclusiva e da una data finale \lstinline{to} esclusiva, 
+					ritornare un \lstinline[language=Java]{Iterable} con tutti i valori contenuti in quell'intervallo 
+					di tempo.
+					
+				\item 
+				\lstinline[columns=fixed, language=Java]{Iterable<Map<String, Object>> findNewestWhere(String index, Map<String, Object> conditions)}:\\
+					Dato un indice o tabella e un insieme di condizioni \lstinline{attributo => valore}, restituire 
+					una lista di elementi che corrispondono a quelle condizioni in ordine temporale 
+					discendente (i nuovi elementi prima).
+					
+				\item 
+				\lstinline[columns=fixed, language=Java]{void insert(String index, Map<String, Object> object, String type)}:\\
+					Dato un indice o tabella, una oggetto e una tipologia, inserire il seguente oggetto 
+					nel database.\\
+					\textit{Nota:} E' compito di questa funzione aggiungere/sovrascrivere il campo rappresentante 
+					la data di inserimento del documento.
+					
+			
+			\end{itemize}
+
+
+		\subsubsection{Aggiunta del database all'elenco dei driver disponibili}
+
+		Per poter essere utilizzabile come database deve essere disponbile un valore di \lstinline{driver} 
+		(vedi §\ref{impostazionidatabase}) per richiamare la classe.
+		La selezione viene fatta utilizzando un Bean condizionale di Spring, ed è disponibile un 
+		Bean per ogni tipologia di elemento supportata.
+
+		Per aggiungere un bean, creare un metodo in una delle seguenti classi:
+		\begin{itemize}
+		\item \textbf{Azioni di rimedio:} \lstinline{it.iks.openapm.databases.DatabaseActionsServiceConfig};
+		\item \textbf{Baseline:} \lstinline{it.iks.openapm.databases.DatabaseBaselinesServiceConfig};
+		\item \textbf{Metriche:} \lstinline{it.iks.openapm.databases.DatabaseMetricsServiceConfig};
+		\item \textbf{Trace:} \lstinline{it.iks.openapm.databases.DatabaseTracesServiceConfig}.
+		\end{itemize}\\
+		
+		\textbf{Esempio:}
+		Aggiungere il driver \lstinline{mysql} per le azioni di rimedio.
+
+		\begin{lstlisting}[language=Java]
+	@Bean
+	@ConditionalOnProperty(name = 
+		"app.actions.database.driver", havingValue = "mysql")
+	public Database actionsDatabase() {
+		return new MySQLDatabase(host, port, protocol,
+			timestamp, keepalive);
+	}
+		\end{lstlisting}

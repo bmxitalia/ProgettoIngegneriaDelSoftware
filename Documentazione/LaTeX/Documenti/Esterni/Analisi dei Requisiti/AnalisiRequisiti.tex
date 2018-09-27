@@ -1,0 +1,41 @@
+\input{../../../LatexLayout/global.tex}
+\input{./res/local.tex}
+
+\title{\DocTitle}
+\author{\GroupName}
+
+\date{8 Gennaio 2018}
+
+\begin{document}
+
+    \frenchspacing
+
+    \makeFrontPage
+
+    \input{./res/changelog.tex}
+    \newpage
+
+    \tableofcontents
+    \newpage
+
+    \renewcommand{\listtablename}{Tabelle}
+    \listoftables
+    \newpage
+
+    \renewcommand{\listfigurename}{Immagini}
+    \listoffigures
+    \newpage
+
+    \input{./sections/introduzione.tex}
+    \newpage
+
+    \input{./sections/descrizioneGenerale.tex}
+    \newpage
+
+    \input{./sections/casiDuso.tex}
+    \newpage
+
+    \input{./sections/requisiti.tex}
+    \newpage
+
+\end{document}

@@ -1,0 +1,42 @@
+\subsection{Implementare una nuova azione di rimedio}
+\label{newazione}
+	\subsubsection{Realizzare una nuova azione di rimedio}
+			
+		Un'azione di rimedio è una classe che implementa l'interfaccia \lstinline{it.iks.openapm.actions.Action} 
+		ed indica un'azione da svolgere nel caso fosse scattato un alert.
+		È disponibile una classe astratta \lstinline{AbstractAction} che implementa il costruttore aspettato e 
+		salva la variabile \lstinline[language=Java]{protected final ActionConfig config}.
+		I metodi necessari alla classe della nuova azione di rimedio sono:
+		
+		\begin{itemize}
+		
+			\item \lstinline[language=Java]{void run(AlertTriggered event)}:
+				dato un evento di cui è scattato un alert, esegue l'azione di rimedio per quel dato alert.
+		
+		\end{itemize}
+		
+		Sono inoltre disponibili alcune eccezioni, che estendono entrambe la classe \lstinline{ActionException}, queste sono:
+		\begin{itemize}
+			\item \lstinline{MissingActionException}: in caso di azione di rimedio mancante;
+			\item \lstinline{ActionConfigurationException}: nel caso di una configurazione di un'azione di rimedio non valida.
+		\end{itemize}
+	
+	\subsubsection{Registrare una nuova azione di rimedio}
+	
+		Per collegare un identificatore alla classe corretta è necessario aggiungere un valore 
+		\lstinline[language=Java]{<String, Class<? extends Action>>} al campo \lstinline{actionsTable} 
+		di \lstinline{it.iks.openapm.actions.}\\ \lstinline{ActionFactory}. 
+		Per farlo è sufficiente aggiungere una riga nell'inizializzazione statica della variabile 
+		(poche righe dopo la sua dichiarazione).
+
+		Per esempio, per collegare l'identificatore \lstinline{email} all'azione di rimedio \lstinline{EmailAction} è
+		sufficiente aggiungere questa linea di codice:
+		\begin{lstlisting}[language=Java]
+	// ActionFactory L31
+	tempActionsTable.put("email", EmailAction.class);
+		\end{lstlisting}
+		
+		La modifica della classe \verb=ActionFactory= alla registrazione di ogni nuova azione di rimedio risulta un punto critico in 
+		questa classe, la soluzione a questo problema è l'implementazione di meccanismi di Reflection che permetterebbero
+		di modificare dinamicamente la classe \verb=ActionFactory=.\\
+		Al momento \GroupName{} non ha ancora implementato questa soluzione.

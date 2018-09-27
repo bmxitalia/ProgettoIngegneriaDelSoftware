@@ -1,0 +1,50 @@
+\input{../../../LatexLayout/global.tex}
+\input{./res/local.tex}
+\input{./res/listings_styles.tex}
+
+\title{\ManualeSviluppatore}
+\author{\GroupName}
+
+\date{27 Aprile 2018}
+
+\begin{document}
+
+	\frenchspacing
+
+	\makeFrontPage
+	
+	\input{./res/changelog.tex}
+	\newpage
+	
+	\tableofcontents
+	%\newpage
+	
+	%\renewcommand{\listtablename}{Tabelle}
+	%\listoftables
+	%\newpage
+	
+	\renewcommand{\listfigurename}{Immagini}
+	\listoffigures
+	\newpage
+	
+	\input{./sections/introduzione.tex}
+	\newpage
+	
+	\input{./sections/requisitiSistema.tex}
+	\newpage
+	
+	\input{./sections/configurazione.tex}
+	\newpage
+	
+	\input{./sections/architettura.tex}
+	\newpage
+	
+	\input{./sections/estensione.tex}
+	\newpage
+	
+	\appendix	
+	
+	\input{./sections/glossario.tex}
+
+\end{document}
+

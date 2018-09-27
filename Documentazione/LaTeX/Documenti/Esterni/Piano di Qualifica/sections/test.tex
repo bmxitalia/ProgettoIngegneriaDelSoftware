@@ -1,0 +1,399 @@
+\subsubsection{Test di sistema} \label{sistema}
+	Vengono qui presentati i test di sistema necessari a garantire che il prodotto 	soddisfi i requisiti presenti in \vAnalisiDeiRequisiti{}.
+
+	Essi, infatti, testano l'intero sistema come fosse una scatola chiusa, senza quindi preconcetti sul funzionamento interno del codice.
+	In questo modo si riescono a verificare oltre che i requisiti funzionali, anche quelli di qualità e di vincolo.
+	
+	La composizione del codice identificativo é spiegata nelle \vNormeDiProgetto{}.
+		
+		\myparagraph{Test di sistema previsti}
+			\begin{center}
+   			\begin{longtable}{ | >{\centering\arraybackslash}m{2.5cm} | >{\raggedright\arraybackslash}m{9cm} | >{\centering\arraybackslash}m{3.5cm} | }
+        
+        	\hline
+        		\textbf{Id Test} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+        	\endhead
+        	
+        		TSFO1 & Verifica che l'amministratore di sistema sia in grado 
+        				di avviare una procedura Batch secondo configurazioni 
+        				temporali prestabilite
+        				 & \donetext{} \\ \hline
+        				 
+        		TSFO1.1 & Verifica che l'amministratore di sistema sia in grado
+        					di accedere al sistema tramite il modulo di autenticazione
+        				 fornito da \Proponente{}
+        				& \donetext{} \\ \hline
+        				
+        		TSFO1.2 & Verifica che l'amministratore di sistema sia in grado di avviare
+        		 una procedura batch in seguito all'avvenuto accesso & \donetext{} \\ \hline
+        				
+        		TSFO2  & Verifica che la procedura batch sia in grado di generare una
+        					metrica
+        					& \donetext{} \\ \hline
+        		
+				
+				TSFO2.1 & Verifica che la procedura batch sia in grado di 
+							leggere trace da un indice ElasticSearch contenente 
+							le trace 
+						& \donetext{} \\ \hline
+				TSFO2.2 & Verifica che la procedura batch sia in grado di filtrare 
+							le trace prima di fare dei raggruppamenti su di esse 
+						& \donetext{} \\ \hline
+				TSFO2.2.1 & Verifica che la procedura batch sia in grado di leggere la modalità di
+							filtraggio delle trace da un indice ElasticSearch 
+							& \donetext{} \\ \hline
+							
+				TSFO2.2.2 & Verifica che la procedura batch possa leggere un valore per la modalità ﬁltraggio scelta da un indice su ElasticSearch
+
+							& \donetext{} \\ \hline
+							
+				TSFO2.2.3 & Verifica che la procedura batch sia in grado di filtrare le trace in base alla
+							configurazione di filtraggio scelta
+							& \donetext{} \\ \hline
+				TSFO2.3 & Verifica che la procedura batch sia in grado di raggruppare 
+							delle trace in base a dei parametri configurabili
+						& \donetext{} \\ \hline
+				TSFO2.3.1 & Verifica che la procedura batch sia in grado di leggere la modalità di raggruppamento
+							delle trace da un indice ElasticSearch
+						& \donetext{} \\ \hline
+						
+				TSFO2.3.1.1 & Verifica che la procedura batch sia in grado di raggruppare trace secondo un attributo specificato & \donetext{} \\ \hline
+				TSFO2.3.1.2 & Verifica che la procedura batch sia in grado di raggruppare trace per host & \donetext{} \\ \hline
+				TSFO2.3.1.3 & Verifica che la procedura batch sia in grado di raggruppare trace per path di una richiesta HTTP
+ & \donetext{} \\ \hline
+				TSFO2.3.1.4 & Verifica che la procedura batch sia in grado di raggruppare trace per parte di path di una richiesta HTTP
+ & \donetext{} \\ \hline
+				TSFO2.3.1.5 & Verifica che la procedura batch sia in grado di raggruppare trace per tipologia di query SQL
+ & \donetext{} \\ \hline
+				TSFO2.3.1.6 & Verifica che la procedura batch sia in grado di raggruppare trace per  tempo di esecuzione di una determinata query
+ & \donetext{} \\ \hline
+				TSFO2.3.1.7 & Verifica che la procedura batch sia in grado di raggruppare trace per tempo di risposta di una richiesta HTTP
+ & \donetext{} \\ \hline
+				TSFO2.3.1.8 & Verifica che la procedura batch sia in grado di raggruppare trace per tipologia di richiesta (http o jdbc)
+ & \donetext{} \\ \hline
+				TSFO2.3.1.9 & Verifica che la procedura batch sia in grado di raggruppare trace per IP di provenienza della richiesta
+ & \donetext{} \\ \hline
+				TSFO2.3.1.10 & Verifica che la procedura batch sia in grado di raggruppare trace per tipologia di browser con cui si `e fatta la richiesta
+ & \donetext{} \\ \hline
+				TSFO2.3.1.11 & Verifica che la procedura batch sia in grado di raggruppare trace per intervalli di tempo in cui sono avvenute le richieste
+ & \donetext{} \\ \hline
+				TSFO2.3.1.11.1 & Verifica che la procedura batch sia in grado di raggruppare trace avvenute in una certa ora del giorno
+ & \donetext{} \\ \hline
+				TSFO2.3.1.11.2 & Verifica che la procedura batch sia in grado di raggruppare trace avvenute un certo giorno della settimana
+ & \donetext{} \\ \hline
+				TSFO2.3.1.11.3 & Verifica che la procedura batch sia in grado di raggruppare trace avvenute in un certo mese dell’anno
+ & \donetext{} \\ \hline
+				
+				TSFO2.3.2 & Verifica che la procedura batch sia in grado di scegliere un valore per configurare
+							la modalità di raggruppamento scelta, prelevandolo da ElasticSearch
+						& \donetext{} \\ \hline
+						
+				TSFO2.3.2.1 & Verifica che la procedura batch possa prelevare un valore per un attributo speciﬁcato
+ & \donetext{} \\ \hline
+				TSFO2.3.2.2 & Verifica che la procedura batch possa prelevare un valore per un parametro host
+& \donetext{} \\ \hline 
+				TSFO2.3.2.3 & Verifica che la procedura batch possa prelevare un valore per un parametro path
+ & \donetext{} \\ \hline
+				TSFO2.3.2.4 & Verifica che la procedura batch possa prelevare un valore per una parte di path
+ & \donetext{} \\ \hline
+				TSFO2.3.2.5 & Verifica che la procedura batch possa prelevare un valore per una query SQL & \donetext{} \\ \hline
+				TSFO2.3.2.6 & Verifica che la procedura batch possa prelevare un valore per il tempo di esecuzione di una query SQL & \donetext{} \\ \hline
+				TSFO2.3.2.7 & Verifica che la procedura batch possa prelevare un valore per il tempo di risposta di una richiesta HTTP
+ & \donetext{} \\ \hline
+				TSFO2.3.2.8 & Verifica che la procedura batch possa prelevare un valore per il parametro tipologia di richiesta
+ & \donetext{} \\ \hline
+				TSFO2.3.2.9 & Verifica che la procedura batch possa prelevare un valore per il parametro tipologia di browser
+ & \donetext{} \\ \hline
+				TSFO2.3.2.10 & Verifica che la procedura batch possa prelevare un valore per un intervallo di tempo in cui sono avvenute delle richieste
+ & \donetext{} \\ \hline
+				TSFO2.3.2.10.1 & Verifica che la procedura batch possa prelevare un valore per il parametro di intervallo di tempo ora
+ & \donetext{} \\ \hline
+				TSFO2.3.2.10.2 & Verifica che la procedura batch possa prelevare un valore per il parametro di intervallo di tempo mese
+ & \donetext{} \\ \hline
+				TSFO2.3.2.10.3 & Verifica che la procedura batch possa prelevare un valore per il parametro di intervallo di tempo anno
+
+& \donetext{} \\ \hline
+				
+				TSFO2.3.3 & Verifica che la procedura batch sia in grado di raggruppare le trace
+							in base alla modalità e al parametro di raggruppamento scelti
+						& \donetext{} \\ \hline
+				TSFO2.4 & Verifica che la procedura batch sia in grado di calcolare una metrica 
+						& \donetext{} \\ \hline
+				TSFO2.4.1 & Verifica che la procedura batch sia in grado di leggere la tipologia di 
+							metrica da calcolare da ElasticSearch 
+						& \donetext{} \\ \hline
+				TSFO2.4.1.1 & Verifica che la procedura batch possa scegliere di calcolare la metrica - Numero medio di errori
+ & \donetext{} \\ \hline
+				TSFO2.4.1.2 & Verifica che la procedura batch possa scegliere di calcolare la metrica - Tempo medio di risposta
+ & \donetext{} \\ \hline
+				TSFO2.4.1.3 & Verifica che la procedura batch possa scegliere di calcolare la metrica - Tempo massimo di risposta
+ & \donetext{} \\ \hline
+				TSFO2.4.1.4 & Verifica che la procedura batch possa scegliere di calcolare la metrica - Tempo minimo di risposta
+ & \donetext{} \\ \hline
+				TSFO2.4.1.5 & Verifica che la procedura batch possa scegliere di calcolare la metrica - Numero medio di chiamate
+ & \donetext{} \\ \hline
+				TSFO2.4.2 & Verifica che la procedura batch sia in grado di scegliere la granularità
+							di tempo per il calcolo della metrica 
+						& \donetext{} \\ \hline
+				TSFO2.4.2.1 & Verifica che la procedura batch possa scegliere una granularità di un minuto & \donetext{} \\ \hline
+				TSFO2.4.2.2 & Verifica che la procedura batch possa scegliere una granularità di un'ora & \donetext{} \\ \hline
+				TSFO2.4.2.3 & Verifica che la procedura batch possa calcolare il valore di una metrica in tempo reale & \donetext{} \\ \hline
+				TSFO2.4.3 & Verifica che la procedura batch sia in grado di calcolare metriche basandosi sullo
+							storico delle metriche
+						& \donetext{} \\ \hline
+				TSFO2.4.4 & Verifica che la procedura batch sia in grado di calcolare una metrica in base alla tipologia scelta & \donetext{} \\ \hline
+				TSFO2.4.5 & Verifica che la procedura batch sia in grado di generare un file JSON contenente la metrica calcolata & \donetext{} \\ \hline
+				TSFO2.5 & Verifica che la procedura batch sia in grado di salvare la metrica 
+							calcolata su un indice ElasticSearch
+						& \donetext{} \\ \hline
+				TSFO3 & Verifica che l'inserimento di una metrica scateni la generazione di una baseline su tale metrica,
+							da parte della procedura batch
+						& \donetext{} \\ \hline
+				TSFO3.1 & Verifica che l'inserimento di una metrica scateni l'aggiornamento della baseline associata a tale tipo
+							di metrica, nel caso in cui la baseline esista già
+						& \donetext{} \\ \hline
+				TSFO3.1.1 & Verifica che la procedura batch sia in grado di scegliere una conﬁgurazione temporale per il calcolo di una baseline, prelevata da un indice ElasticSearch
+ & \donetext{} \\ \hline
+				TSFO3.1.1.1 & Verifica che la procedura batch sia in grado di scegliere una base oraria con modello giornaliero  & \donetext{} \\ \hline
+				TSFO3.1.1.2 & Verifica che la procedura batch sia in grado di scegliere una  base oraria con modello settimanale per la costruzione di una baseline
+& \donetext{} \\ \hline
+				TSFO3.1.1.3 & Verifica che la procedura batch sia in grado di scegliere una base oraria con modello mensile per la costruzione di una baseline
+ & \donetext{} \\ \hline
+				
+				TSFO3.1.2 & Verifica che la procedura batch sia in grado di 
+							leggere le metriche coinvolte dal calcolo della baseline da un indice ElasticSearch
+						& \donetext{} \\ \hline
+				TSFO3.1.3 & Verifica che la procedura batch sia in grado di calcolare una baseline & \donetext{} \\ \hline
+				TSFO3.1.3.1 & Verifica che la procedura batch sia in grado di calcolare la media delle metriche coinvolte nel calcolo & \donetext{} \\ \hline
+				TSFO3.1.3.2 & Verifica che la procedura batch sia in grado di calcolare la deviazione standard delle metriche coinvolte nel calcolo & \donetext{} \\ \hline
+				TSFO3.1.3.3 & Verifica che la procedura batch sia in grado di generare la baseline in base ai calcoli effettuati & \donetext{} \\ \hline
+				TSFO3.1.3.4 & Verifica che la procedura batch sia in grado di generare un ﬁle JSON contenente la baseline calcolata
+ & \donetext{} \\ \hline
+				TSFO3.1.4 & Verifica che la procedura batch sia in grado di generare baseline in base alla conﬁgurazione temporale decisa
+ & \donetext{} \\ \hline
+				TSFO3.1.5 & Verifica che la procedura batch sia in grado di salvare la baseline calcolata in un indice ElasticSearch & \donetext{} \\ \hline
+				TSFO4 & Verifica che l'inserimento di una nuova metrica scateni un controllo di critical event da parte della
+						procedura batch & \donetext{} \\ \hline
+				TSFO4.1 & Verifica che la procedura batch sia in grado di configurare una policy, che può avere anche più condizioni associate, leggendo dati da ElasticSearch & \donetext{} \\ \hline
+				TSFO4.1.1 & Verifica che la procedura batch sia in grado di selezionare una tipologia di soglia per la policy da un indice
+							ElasticSearch & \donetext{} \\ \hline
+				TSFO4.1.1.1 & Verifica che la procedura batch possa selezionare una soglia statica & \donetext{} \\ \hline
+				TSFO4.1.1.2 & Verifica che la procedura batch possa selezionare una soglia dinamica (baseline) & \donetext{} \\ \hline
+				TSFO4.1.1.3 & Verifica che la procedura batch possa selezionare una soglia dinamica (baseline con deviazione standard) & \donetext{} \\ \hline
+				TSFO4.1.2 & Verifica che la procedura batch sia in grado di leggere un valore per la tipologia di soglia scelta,
+							prelevandolo da un indice ElasticSearch & \donetext{} \\ \hline
+				TSFO4.1.2.1 & Verifica che la procedura batch possa leggere un valore per una soglia statica & \donetext{} \\ \hline
+				TSFO4.1.2.2 & Verifica che la procedura batch possa leggere un valore per una baseline senza deviazione standard & \donetext{} \\ \hline
+				TSFO4.1.2.3 & Verifica che la procedura batch possa leggere un valore per una baseline con deviazione standard & \donetext{} \\ \hline
+				TSFO4.1.3 & Verifica che la procedura batch sia in grado di leggere l'azione di rimedio da eseguire, prelevandola da
+							ElasticSearch, nel caso in cui si verifichi un critical event & \donetext{} \\ \hline
+				TSFO4.2 & Verifica che la procedura batch sia in grado di verificare la policy configurata & \donetext{} \\ \hline
+				TSFO4.2.1 & Verifica che la procedura batch sia in grado di leggere il valore attuale della metrica inserita & \donetext{} \\ \hline
+				TSFO4.2.2 & Verifica che la procedura batch controlli che il valore della metrica sia in linea con la soglia selezionata & \donetext{} \\ \hline
+				TSFO4.3 & Verifica che la procedura batch lanci un critical event nel caso in sui la soglia viene superata & \donetext{} \\ \hline
+				TSFO4.3.1 & Verifica che la procedura batch possa lanciare un critical event immediatamente & \donetext{} \\ \hline
+				TSFO4.3.2 & Verifica che la procedura batch possa lanciare un critical event dopo N minuti che si `e veriﬁcata la criticit`a & \donetext{} \\ \hline
+				TSFO4.3.3 & Verifica che la procedura batch possa lanciare un critical event al termine della criticità & \donetext{} \\ \hline
+				TSFO4.4 & Verifica che la procedura batch, una volta lanciato il critical event, possa eseguire un'azione di rimedio & \donetext{} \\ \hline
+				TSFO4.4.1 & Verifica che la procedura batch possa inviare una e-mail di notifica del critical event & \donetext{} \\ \hline
+				TSFO4.4.2 & Verifica che la procedura batch possa eseguire una procedura automatica & \donetext{} \\ \hline
+				TSFO4.4.3 & Verifica che la procedura batch possa salvare il critical event su un indice ElasticSearch & \donetext{} \\ \hline
+				TSFD5 & Verifica che allo scattare di uno critical event, la procedura batch sia in grado di inviare una mail di notifica & \donetext{} \\ \hline
+				TSFD5.1 & Verifica che la procedura batch sia in grado di prelevare l'indirizzo e-mail del destinatario
+				da un indice ElasticSearch & \donetext{} \\ \hline
+				TSFD5.2 & Verifica che la procedura batch crei la mail utilizzando il template JTwig & \donetext{} \\ \hline
+				TSFD5.3 & Verifica che la procedura batch configuri la mail leggendo la configurazione da un indice ElasticSearch & \donetext{} \\ \hline
+				TSFD5.3.1 & Verifica che la procedura batch sia in grado di leggere le conﬁgurazioni di invio della e-mail da un indice ElasticSearch
+ & \donetext{} \\ \hline
+				TSFD5.3.1.1 & Verifica che la procedura batch possa leggere il server SMTP
+ & \donetext{} \\ \hline
+				TSFD5.3.1.2 & Verifica che la procedura batch possa leggere il numero di porta
+ & \donetext{} \\ \hline
+				TSFD5.3.1.3 & Verifica che la procedura batch possa leggere l'oggetto della e-mail
+ & \donetext{} \\ \hline
+				TSFD5.3.1.4 & Verifica che la procedura batch possa leggere lo username dell'account di posta elettronica & \donetext{} \\ \hline
+				TSFD5.3.1.5 & Verifica che la procedura batch possa leggere la password dell'account di posta elettronica & \donetext{} \\ \hline
+				TSFD5.4 & Verifica che la procedura batch possa leggere il testo della e-mail (pu`o essere codice HTML) da un indice ElasticSearch
+ & \donetext{} \\ \hline
+				TSFD5.5 & Verifica che la procedura batch sia in grado di collegarsi al server di invio della mail & \donetext{} \\ \hline
+				TSFD5.6 & Verifica che la procedura batch sia in grado di inviare la mail al destinatario scelto e con le configurazioni
+							impostate & \donetext{} \\ \hline
+				TSFD6 & Verifica che la procedura batch, al verificarsi di un critical event, possa memorizzarlo in un indice ElasticSearch & \donetext{} \\ \hline
+				TSFD6.1 & Verifica che la procedura batch sia in grado di prelevare l'indice ElasticSearch dove memorizzare il critical
+							event & \donetext{} \\ \hline
+				TSFD6.2 & Verifica che la procedura batch sia in grado di inserire il critical event in un ﬁle JSON & \donetext{} \\ \hline
+				TSFD6.3 & Verifica che la procedura batch sia in grado di memorizzare il critical event sull’indice ElasticSearch prelevato & \donetext{} \\ \hline
+				TSFD7 & Verifica che la procedura batch, al verificarsi di un critical event, possa eseguire una procedura automatica & \donetext{} \\ \hline
+				TSFD7.1 & Verifica che la procedura batch sia in grado di prelevare la procedura automatica da eseguire
+							da un indice ElasticSearch & \donetext{} \\ \hline
+				TSFD7.2 & Verifica che la procedura batch possa eseguire la procedura prelevata tramite Script \glossaryItem{Bash}
+ & \donetext{} \\ \hline
+				TSFF8 & Verifica che l'amministratore di sistema sia in grado di configurare la schedulazione delle procedure batch da eseguire & \donetext{} \\ \hline
+				TSFF8.1 & Verifica che l'amministratore di sistema sia in grado di leggere la configurazione della procedura
+							da un indice ElasticSearch & \donetext{} \\ \hline
+				TSFF8.2 & Verifica che l'amministratore di sistema sia in grado di configurare la procedura con i parametri prelevati & \donetext{} \\ \hline
+				TSFF8.3 & Verifica che l'amministratore di sistema sia in grado di memorizzare su ElasticSearch la nuova configurazione
+							per la procedura & \donetext{} \\ \hline
+				TSFF9 & Verifica che, in caso di errore di connessione al server di invio della e-mail, la procedura batch possa memorizzare il messaggio per un invio futuro & \donetext{} \\ \hline
+				TSFF9.1 & Verifica che la procedura batch possa prelevare da un indice ElasticSearch la posizione in cui memorizzare il messaggio
+ & \donetext{} \\ \hline
+				TSFF9.2 & Verifica che la procedura batch possa memorizzare il messaggio sull’indice ElasticSearch prelevato
+ & \donetext{} \\ \hline
+ 				TSQO1 & Verifica che venga fornito un manuale utente con la guida per l'installazione del prodotto & \donetext{} \\ \hline
+ 				TSQO2 & Verifica che la progettazione del prodotto segua norme e metriche indicate nei riferimenti normativi
+& \donetext{} \\ \hline
+ 				TSQO3 & Verifica che la codifica del prodotto segua norme e metriche indicate nei riferimenti normativi & \donetext{} \\ \hline
+ 				TSVO1 & Verifica che l'applicazione utilizzi il linguaggio Java 8.0 & \donetext{} \\ \hline
+ 				TSVO2 & Verifica che l'applicazione si interfacci con ElasticSearch 6 & \donetext{} \\ \hline
+ 				TSVO3 & Verifica che l'applicazione esegua procedure di rimedio in Bash & \donetext{} \\ \hline
+ 				TSVD4 & Verifica che l'applicazione salvi le proprie configurazioni su ElasticSearch & \donetext{} \\ \hline
+ 				TSVD5 & Verifica che l'applicazione utilizzi il framework \glossaryItem{Spring Batch}& \donetext{} \\ \hline
+ 				TSVD6 & Verifica che l'applicazione funzioni in ambiente Ubuntu 16.04 & \donetext{} \\ \hline
+ 				TSVF7 & Verifica che l'applicazione funzioni con database diversi da ElasticSearch (es. Apache Solr) & \donetext{} \\ \hline
+ 				TSVF8 & Verifica che l'applicazione funzioni in ambiente Amazon Linux & \donetext{} \\ \hline
+			\caption[Test di sistema]{Tabella dei test di sistema}
+
+			\end{longtable}
+	
+			\end{center}
+					
+		\myparagraph{Tracciamento test di sistema-requisiti}
+			\begin{center}
+   			\begin{longtable}{ | >{\centering\arraybackslash}m{5cm} | >{\centering\arraybackslash}m{5cm} | }
+        
+        	\hline
+        		\textbf{Test} & \textbf{Requisito} \\ \hline
+        	\endhead	
+        		TSFO1 & RFO1 \\ \hline      		
+				TSFO1.1	& RFO1.1 \\ \hline	
+				TSFO1.2 & RFO1.2 \\ \hline	
+				TSFO2 & RFO2 \\ \hline
+				TSFO2.1 & RFO2.1 \\ \hline
+				TSFO2.2 & RFO2.2 \\ \hline
+				TSFO2.2.1 & RFO2.2.1 \\ \hline
+				TSFO2.2.2 & RFO2.2.2 \\ \hline
+				TSFO2.2.3 & RFO2.2.3 \\ \hline
+				TSFO2.3 & RFO2.3 \\ \hline
+				TSFO2.3.1 & RFO2.3.1 \\ \hline
+				TSFO2.3.1.1 & RFO2.3.1.1 \\ \hline
+				TSFO2.3.1.2 & RFO2.3.1.2 \\ \hline
+				TSFO2.3.1.3 & RFO2.3.1.3 \\ \hline
+				TSFO2.3.1.4 & RFO2.3.1.4 \\ \hline
+				TSFO2.3.1.5 & RFO2.3.1.5 \\ \hline
+				TSFO2.3.1.6 & RFO2.3.1.6 \\ \hline
+				TSFO2.3.1.7 & RFO2.3.1.7 \\ \hline
+				TSFO2.3.1.8 & RFO2.3.1.8 \\ \hline
+				TSFO2.3.1.9 & RFO2.3.1.9 \\ \hline
+				TSFO2.3.1.10 & RFO2.3.1.10 \\ \hline
+				TSFO2.3.1.11 & RFO2.3.1.11 \\ \hline
+				TSFO2.3.1.11.1 & RFO2.3.1.11.1 \\ \hline
+				TSFO2.3.1.11.2 & RFO2.3.1.11.2 \\ \hline
+				TSFO2.3.1.11.3 & RFO2.3.1.11.3 \\ \hline
+				TSFO2.3.2 & RFO2.3.2 \\ \hline
+				TSFO2.3.2.1 & RFO2.3.2.1 \\ \hline
+				TSFO2.3.2.2 & RFO2.3.2.2 \\ \hline
+				TSFO2.3.2.3 & RFO2.3.2.3 \\ \hline
+				TSFO2.3.2.4 & RFO2.3.2.4 \\ \hline
+				TSFO2.3.2.5 & RFO2.3.2.5 \\ \hline
+				TSFO2.3.2.6 & RFO2.3.2.6 \\ \hline
+				TSFO2.3.2.7 & RFO2.3.2.7 \\ \hline
+				TSFO2.3.2.8 & RFO2.3.2.8 \\ \hline
+				TSFO2.3.2.9 & RFO2.3.2.9 \\ \hline
+				TSFO2.3.2.10 & RFO2.3.2.10 \\ \hline
+				TSFO2.3.2.10.1 & RFO2.3.2.10.1 \\ \hline
+				TSFO2.3.2.10.2 & RFO2.3.2.10.2 \\ \hline
+				TSFO2.3.2.10.3 & RFO2.3.2.10.3 \\ \hline
+				TSFO2.3.3 & RFO2.3.3 \\ \hline
+				TSFO2.4 & RFO2.4 \\ \hline
+				TSFO2.4.1 & RFO2.4.1 \\ \hline
+				TSFO2.4.1.1 & RFO2.4.1.1 \\ \hline
+				TSFO2.4.1.2 & RFO2.4.1.2 \\ \hline
+				TSFO2.4.1.3 & RFO2.4.1.3 \\ \hline
+				TSFO2.4.1.4 & RFO2.4.1.4 \\ \hline
+				TSFO2.4.1.5 & RFO2.4.1.5 \\ \hline
+				TSFO2.4.2 & RFO2.4.2 \\ \hline
+				TSFO2.4.2.1 & RFO2.4.2.1 \\ \hline
+				TSFO2.4.2.2 & RFO2.4.2.2 \\ \hline
+				TSFO2.4.2.3 & RFO2.4.2.3 \\ \hline
+				TSFO2.4.3 & RFO2.4.3 \\ \hline
+				TSFO2.4.4 & RFO2.4.4 \\ \hline
+				TSFO2.4.5 & RFO2.4.5 \\ \hline
+				TSFO2.5 & RFO2.5 \\ \hline
+				TSFO3 & RFO3 \\ \hline
+				TSFO3.1 & RFO3.1 \\ \hline
+				TSFO3.1.1 & RFO3.1.1 \\ \hline
+				TSFO3.1.1.1 & RFO3.1.1.1 \\ \hline
+				TSFO3.1.1.2 & RFO3.1.1.2 \\ \hline
+				TSFO3.1.1.3 & RFO3.1.1.3 \\ \hline
+				TSFO3.1.2 & RFO3.1.2 \\ \hline
+				TSFO3.1.3 & RFO3.1.3 \\ \hline
+				TSFO3.1.3.1 & RFO3.1.3.1 \\ \hline
+				TSFO3.1.3.2 & RFO3.1.3.2 \\ \hline
+				TSFO3.1.3.3 & RFO3.1.3.3 \\ \hline
+				TSFO3.1.3.4 & RFO3.1.3.4 \\ \hline
+				TSFO3.1.4 & RFO3.1.4 \\ \hline
+				TSFO3.1.5 & RFO3.1.5 \\ \hline
+				TSFO4 & RFO4 \\ \hline
+				TSFO4.1 & RFO4.1 \\ \hline
+				TSFO4.1.1 & RFO4.1.1 \\ \hline
+				TSFO4.1.1.1 & RFO4.1.1.1 \\ \hline
+				TSFO4.1.1.2 & RFO4.1.1.2 \\ \hline
+				TSFO4.1.1.3 & RFO4.1.1.3 \\ \hline
+				TSFO4.1.2 & RFO4.1.2 \\ \hline
+				TSFO4.1.2.1 & RFO4.1.2.1 \\ \hline
+				TSFO4.1.2.2 & RFO4.1.2.2 \\ \hline
+				TSFO4.1.2.3 & RFO4.1.2.3 \\ \hline
+				TSFO4.1.3 & RFO4.1.3 \\ \hline
+				TSFO4.2 & RFO4.2 \\ \hline
+				TSFO4.2.1 & RFO4.2.1 \\ \hline
+				TSFO4.2.2 & RFO4.2.2 \\ \hline
+				TSFO4.3 & RFO4.3 \\ \hline
+				TSFO4.3.1 & RFO4.3.1 \\ \hline
+				TSFO4.3.2 & RFO4.3.2 \\ \hline
+				TSFO4.3.3 & RFO4.3.3 \\ \hline
+				TSFO4.4 & RFO4.4 \\ \hline
+				TSFO4.4.1 & RFO4.4.1 \\ \hline
+				TSFO4.4.2 & RFO4.4.2 \\ \hline
+				TSFO4.4.3 & RFO4.4.3 \\ \hline
+				TSFD5 & RFD5 \\ \hline
+				TSFD5.1 & RFD5.1 \\ \hline
+				TSFD5.2 & RFD5.2 \\ \hline
+				TSFD5.3 & RFD5.3 \\ \hline
+				TSFD5.3.1 & RFD5.3.1 \\ \hline
+				TSFD5.3.1.1 & RFD5.3.1.1 \\ \hline
+				TSFD5.3.1.2 & RFD5.3.1.2 \\ \hline
+				TSFD5.3.1.3 & RFD5.3.1.3 \\ \hline
+				TSFD5.3.1.4 & RFD5.3.1.4 \\ \hline
+				TSFD5.3.1.5 & RFD5.3.1.5 \\ \hline
+				TSFD5.4 & RFD5.4 \\ \hline
+				TSFD5.5 & RFD5.5 \\ \hline
+				TSFD5.6 & RFD5.6 \\ \hline
+				TSFD6 & RFD6 \\ \hline
+				TSFD6.1 & RFD6.1 \\ \hline
+				TSFD6.2 & RFD6.2 \\ \hline
+				TSFD6.3 & RFD6.3 \\ \hline
+				TSFD7 & RFD7 \\ \hline
+				TSFD7.1 & RFD7.1 \\ \hline
+				TSFD7.2 & RFD7.2 \\ \hline
+				TSFF8 & RFF8 \\ \hline
+				TSFF8.1 & RFF8.1 \\ \hline
+				TSFF8.2 & RFF8.2 \\ \hline
+				TSFF8.3 & RFF8.3 \\ \hline
+				TSFF9 & RFF9 \\ \hline
+				TSFF9.1 & RFF9.1 \\ \hline
+				TSFF9.2 & RFF9.1 \\ \hline
+				TSQO1 & RQO1 \\ \hline
+				TSQO2 & RQO2 \\ \hline
+				TSQO3 & RQO3 \\ \hline
+				TSVO1 & RVO1 \\ \hline
+				TSVO2 & RVO2 \\ \hline
+				TSVO3 & RVO3 \\ \hline
+				TSVD4 & RVD4 \\ \hline
+				TSVD5 & RVD5 \\ \hline
+				TSVD6 & RVD6 \\ \hline
+				TSVF7 & RVF7 \\ \hline
+				TSVF8 & RVF8 \\ \hline
+			\caption[Tracciamento test di sistema - requisiti]{Tabella di tracciamento test di sistema - requisiti}
+			\end{longtable}
+	
+			\end{center}
